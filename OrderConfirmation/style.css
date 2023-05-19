@@ -1,0 +1,372 @@
+body {
+font-family: 'Roboto', sans-serif;
+}
+
+body .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 200;
+}
+body .header span {
+  opacity: 0.5;
+}
+
+body .header .dateAndTime {
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+
+body .header .dateAndTime span {
+  margin-left: 10px;
+}
+
+body .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+body aside {
+  height: 100vh;
+}
+
+.left-side {
+    position: relative;
+    width: 49%;
+    /* height: vh; */
+  
+  }
+
+
+
+.left-side .table-header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-right: 5px;
+  }
+  
+
+.left-side .table-header hr {
+    border: 0.5px #E4E4E4 solid;
+    margin-top: -10px;
+   }
+    
+
+ .left-side .table-header div div:nth-child(2) span {
+    margin: 1rem;
+  }
+  
+
+.left-side .each-list {
+    overflow-y: auto;
+    width: 100%;
+    height: 83vh;
+  }
+  
+
+.left-side .each-list .item {
+    display: block;
+  
+    font-weight: 500;
+    font-size: 18px;
+  
+    margin-top: 20px;
+  
+  }
+
+.left-side .each-list  .item div {
+    display: block;
+  }
+  
+
+.left-side .each-list .item .info {
+    display: flex;
+    align-items: center;
+  }
+  
+
+.left-side .each-list .item .info img {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+  }
+  
+
+.left-side .each-list .item .info .nameAndPrice {
+    display: inline-block;
+    margin-left: 0px;
+    width: 420px;
+    text-align: left;
+  }
+  
+
+.left-side .each-list .item .info .nameAndPrice #unitPrice { 
+    opacity: 0.5;
+    font-weight: 400;
+  }
+  
+  
+
+.left-side .each-list .item .info .nameAndPrice p {
+    display: block;
+    width: 100%;
+  }
+  
+
+.left-side .each-list .item .info .sizeQtyandPrice {
+    display: flex;
+    justify-content: space-between;
+    gap: 45px;
+  }
+
+.left-side .each-list .item .info .sizeQtyandPrice span {
+    display: flex;
+    width: 60px;  
+    text-align: center;
+  
+    justify-content: space-around;
+    align-items: center;
+  
+  }
+  
+
+.left-side .each-list .item .info .sizeQtyandPrice span input {
+    width: 70px;
+    height: 70px;
+    background-color: #E4E4E4;
+  
+    border: none;
+    border-radius: 7px;
+  
+    text-align: center;
+    font-size: 18px;
+  }
+  
+
+.left-side .each-list .item .action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 16px; */
+  
+    flex-grow: 3;
+    /* width: 100%; */
+  }
+
+.left-side .each-list .item .action input {
+    background-color: #e4e4e4;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    
+    font-family: 300;
+    font-size: 16px;
+    
+    border: none;
+    border-radius: 8px;
+    height: 48px;
+  
+    width: 80%;
+  
+  }
+
+.left-side .each-list .item .action button {
+    width: 48px;
+    height: 48px;
+  
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 5px;
+  
+  
+    cursor: pointer;
+  
+    color: #343330;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+.left-side .each-list .item .action #delete-Button {
+    border-color: #EA736D;
+  }
+  
+
+/* RIGHT SIDE */
+
+
+.right-side {
+  width:49%;
+  position: relative;
+}
+
+.right-side .title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.right-side .input-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.right-side .currency-container .currency-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: grow;
+  gap: 20px;
+
+}
+
+.right-side .currency-container .currency-button button {
+  width: 100%;
+  height: 48px;
+
+  border: 1px solid #343330;
+  border-radius: 8px;
+}
+
+.right-side .currency-container .currency-button button:hover {
+  background: #32BBCB;
+  border: none;
+  color: white;
+}
+
+.right-side .inputAmmout-container input {
+  width: calc(100% - 10px);
+  height: 80px;
+  text-align: right;
+  font-size: 48px;
+
+  border-radius: 12px;
+  border-width: 1px;
+  padding-right: 10px;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.right-side .inputAmmout-container .number-container .row {
+  width: 100%;
+  margin-top: 10px;
+
+  display: flex;
+  flex-grow: 3;
+  justify-content: space-between;
+
+  gap: 5px;
+  /* row-gap: 0px; */
+
+  font-size: 20px;
+
+}
+
+.right-side .inputAmmout-container .row div {
+
+  height: 60px;
+  /* border-width: 1; */
+  /* border-style: solid; */
+  width: 100%;
+  border-radius: 6px;
+  background-color: #E4E4E4;
+  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-side .inputAmmout-container .row div:hover {
+  opacity: 0.5;
+}
+
+.right-side .inputAmmout-container .row #okay-button {
+  background-color: #32BBCB;
+  color: white;
+}
+
+/* Footer */
+
+
+.right-side .footer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+
+  bottom: 40px;
+  width: 100%;
+  margin: auto;
+  /* height: 100px; */
+
+
+  background-color: #ffffff;
+
+  border-width: 1px 0  0;
+  border-color: #E4E4E4;
+  border-style: solid;
+  
+
+}
+.right-side .footer span {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.right-side .footer div:first-child span:first-child {
+  font-size: 26px;
+}
+
+.right-side .footer p {
+  display: inline-block;
+  opacity: 60%;
+  font-family: 100;
+}
+
+
+.right-side .footer .price { 
+  color: #32BBCB;
+
+}
+
+.right-side .footer #totalPrice {
+  padding-right: 1rem;
+  opacity: 100%;
+
+}
+
+.right-side .footer  .button-container  {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 2;
+  gap: 20px;
+}
+
+.right-side .footer  .button-container button {
+
+  background: transparent;
+  color: #32bbcb;
+  border: 1px solid #32bbcb;
+  border-radius: 5px;
+  padding: 0.5rem 4rem;
+  height: 50px;
+  width: 100%;
+
+}
+
+
+.right-side .footer .button-container #continue-Button {
+  background-color: #32BBCB;
+  color: white;
+  border: none;
+}
