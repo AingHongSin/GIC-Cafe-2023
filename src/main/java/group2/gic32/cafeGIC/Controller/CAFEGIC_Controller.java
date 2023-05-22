@@ -6,8 +6,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class CAFEGIC_Controller {
+
     @GetMapping(path = "/")
     public ModelAndView test(){
-        return new ModelAndView("test");
+        return new ModelAndView("login");
     }
+
+    
 }
