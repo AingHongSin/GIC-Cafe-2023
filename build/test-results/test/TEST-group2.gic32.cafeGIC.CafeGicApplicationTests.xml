@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="group2.gic32.cafeGIC.CafeGicApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-05-21T10:41:49" hostname="APPLEs-MacBook-Pro-3.local" time="0.874">
+  <properties/>
+  <testcase name="contextLoads()" classname="group2.gic32.cafeGIC.CafeGicApplicationTests" time="0.874"/>
+  <system-out><![CDATA[17:41:47.490 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [group2.gic32.cafeGIC.CafeGicApplicationTests]: CafeGicApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:41:47.590 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration group2.gic32.cafeGIC.CafeGicApplication for test class group2.gic32.cafeGIC.CafeGicApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.0)
+
+2023-05-21T17:41:48.062+07:00  INFO 75613 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : Starting CafeGicApplicationTests using Java 17.0.5 with PID 75613 (started by paraga in /Users/paraga/Downloads/cafeGIC)
+2023-05-21T17:41:48.064+07:00  INFO 75613 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2023-05-21T17:41:49.240+07:00  INFO 75613 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : Started CafeGicApplicationTests in 1.514 seconds (process running for 2.753)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
