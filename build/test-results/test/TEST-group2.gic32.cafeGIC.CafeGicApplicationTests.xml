@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="group2.gic32.cafeGIC.CafeGicApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-05-21T10:41:49" hostname="APPLEs-MacBook-Pro-3.local" time="0.874">
+<testsuite name="group2.gic32.cafeGIC.CafeGicApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-05-28T21:42:31" hostname="APPLEs-MacBook-Pro-3.local" time="0.68">
   <properties/>
-  <testcase name="contextLoads()" classname="group2.gic32.cafeGIC.CafeGicApplicationTests" time="0.874"/>
-  <system-out><![CDATA[17:41:47.490 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [group2.gic32.cafeGIC.CafeGicApplicationTests]: CafeGicApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:41:47.590 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration group2.gic32.cafeGIC.CafeGicApplication for test class group2.gic32.cafeGIC.CafeGicApplicationTests
+  <testcase name="contextLoads()" classname="group2.gic32.cafeGIC.CafeGicApplicationTests" time="0.68"/>
+  <system-out><![CDATA[04:42:27.248 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [group2.gic32.cafeGIC.CafeGicApplicationTests]: CafeGicApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+04:42:27.349 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration group2.gic32.cafeGIC.CafeGicApplication for test class group2.gic32.cafeGIC.CafeGicApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -11,11 +11,27 @@
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
   '  |____| .__|_| |_|_| |_\__, | / / / /
  =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.1.0)
+ :: Spring Boot ::       (v3.1.1-SNAPSHOT)
 
-2023-05-21T17:41:48.062+07:00  INFO 75613 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : Starting CafeGicApplicationTests using Java 17.0.5 with PID 75613 (started by paraga in /Users/paraga/Downloads/cafeGIC)
-2023-05-21T17:41:48.064+07:00  INFO 75613 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : No active profile set, falling back to 1 default profile: "default"
-2023-05-21T17:41:49.240+07:00  INFO 75613 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : Started CafeGicApplicationTests in 1.514 seconds (process running for 2.753)
+2023-05-29T04:42:27.772+07:00  INFO 7651 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : Starting CafeGicApplicationTests using Java 17.0.7 with PID 7651 (started by paraga in /Users/paraga/Downloads/GIC-Cafe-2023)
+2023-05-29T04:42:27.774+07:00  INFO 7651 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2023-05-29T04:42:28.662+07:00  INFO 7651 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-29T04:42:28.689+07:00  INFO 7651 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
+2023-05-29T04:42:29.101+07:00  INFO 7651 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-29T04:42:29.178+07:00  INFO 7651 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-05-29T04:42:29.180+07:00  INFO 7651 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-05-29T04:42:29.308+07:00  INFO 7651 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-29T04:42:29.436+07:00  INFO 7651 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-05-29T04:42:29.450+07:00  INFO 7651 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-29T04:42:29.805+07:00  INFO 7651 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55c03e4
+2023-05-29T04:42:29.808+07:00  INFO 7651 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-29T04:42:30.003+07:00  INFO 7651 --- [    Test worker] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.31
+2023-05-29T04:42:30.111+07:00  INFO 7651 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-29T04:42:30.313+07:00  INFO 7651 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-29T04:42:30.318+07:00  INFO 7651 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-29T04:42:30.462+07:00  WARN 7651 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-29T04:42:31.101+07:00  INFO 7651 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-05-29T04:42:31.179+07:00  INFO 7651 --- [    Test worker] g.gic32.cafeGIC.CafeGicApplicationTests  : Started CafeGicApplicationTests in 3.67 seconds (process running for 4.765)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

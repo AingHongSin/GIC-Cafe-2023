@@ -27,7 +27,7 @@ public class Login_Controller {
 
         if (isValidCredentials) {
             // Redirect to a success page or perform other actions
-            return new ModelAndView("tableselection");
+            return new ModelAndView("categorymanagement");
         } else {
             // Redirect back to the login page with an error message
             ModelAndView modelAndView = new ModelAndView("login");

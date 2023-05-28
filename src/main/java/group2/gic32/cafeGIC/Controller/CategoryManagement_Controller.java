@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CashirerManagement_Controller {
+public class CategoryManagement_Controller {
     
-    @GetMapping("/cashier_management")
-    public ModelAndView cashier_management(){
+    @GetMapping("/categorymanagement")
+    public ModelAndView category_management(){
         return new ModelAndView("categorymanagement");
     }
 

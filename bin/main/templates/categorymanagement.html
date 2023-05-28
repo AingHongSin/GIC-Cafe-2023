@@ -1,52 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
+    <title>Category - Admin</title>
     <link rel="stylesheet" href="/static/css/category-admin/category.css">
 </head>
 <body>
+    <div th:replace="fragements :: sidebar"></div>
+
     <div class="container">
-        <div class="navbar-section">
-            <div class="navbar-logo">
-                <div class="navbar-logo-title"><img src="/static/svg/sideBar/logo.png" alt="logo"></div>
-                <div class="navbar-logo-title">
-                    <h2>GIC CAFE</h2>
-                </div>
-            </div>
-            <div class="navbar-content">
-                <div class="navbar">
-                    <div class="navbar-item">
-                        <img src="/static/svg/sideBar/table-svgrepo-com.svg" alt="table">
-                        <span>Table</span>
-                    </div>
-                    <div class="navbar-item">
-                        <img src="/static/svg/sideBar/team-18.svg" alt="cashier">
-                        <span>Cashier</span>
-                    </div>
-                    <div class="navbar-item">
-                        <img src="/static/svg/sideBar/food-dish-svgrepo-com.svg" alt="food-drink">
-                        <span>Food & Drink</span>
-                    </div>
-                    <div id="category">
-                        <img src="/static/svg/sideBar/layout-grid-svgrepo-com.svg" alt="list">
-                        <span>Category</span>
-                    </div>
-                    <div class="navbar-item">
-                        <img src="/static/svg/sideBar/order-svgrepo-com.svg" alt="order">
-                        <span>Order</span>
-                    </div>
-                </div>
-                <div class="log-out">
-                    <div class="navbar-item">
-                        <img src="/static/svg/sideBar/log-out.svg" alt="logout">
-                        <span>Logout</span>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="all-cashier">
             <div class="category-navbar">
                 <div>
@@ -141,4 +105,4 @@
         </div>
     </div>
 </body>
-</html>
+</html> 

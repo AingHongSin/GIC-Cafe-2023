@@ -1,13 +1,29 @@
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  .container {
-    height: 100vh;
-    display: flex;
-  }
-   .navbar-section {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-grow: 2;
+}
+
+#ADMIN-SIDEBAR {
+  position: fixed;
+  width: 330px;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  position: fixed;
+  /* width: calc(100% - 350px); */
+  right: 0;
+  height: 100vh;
+  display: flex;
+}
+
+/* .navbar-section {
     width: 30%;
     height: 100%;
     background-color: #34332f;
@@ -61,162 +77,199 @@ body {
   }
    .log-out .navbar-item span {
     color: white;
-  }
-   .table-management {
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-   .table-management-container {
-    width: 25rem;
-    height: 13rem;
-    background-color: #34332f;
-    border-radius: 10px;
-  }
-   .table-management-container h3 {
-    text-align: center;
-    color: white;
-  }
-   .input-table-num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-  }
-   .input-table-num p {
-    color: white;
-  }
-   .input-table-num input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-  }
-   .button {
-    display: flex;
-    justify-content: end;
-    gap: 1rem;
-    padding-right: 2rem;
-    margin-top: 3rem;
-  }
-   .button .cancle {
-    padding: 0.5rem;
-    border: 1px solid red;
-    color: red;
-    background-color: transparent;
-  }
-   .button .done {
-    padding: 0.4rem;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    background-color: #00bed2;
-  }/*# sourceMappingURL=log-out.css.map */
-  /* all cashier */
-   .all-cashier {
-    width: 70%;
-    /* padding: 0 5rem; */
-    display: flex;
-    gap: 1rem;
-  }
-  .category-navbar{
-    width: 30%;
-    background-color: #484745;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* align-items: center; */
-    padding: 1rem;
-    color: #f1f1f1;
-  }
-  #iced{
-    color: #000000;
-    background-color: #f1f1f1;
-    padding: 1rem;
-  }
-  .add-category svg{
-    height: 16px;
-    fill: white;
-  }
-  .header-list-data{
-    width: 70%;
-  }
-   header {
-    display: flex;
-    justify-content: space-between;
-  }
-   .btn-search {
-    display: flex;
-    align-items: center;
-  }
-   .btn button {
-    background-color: #00bfcb;
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem;
-  }
-   .btn button svg {
-    height: 16px;
-    fill: #ffffff;
-  }
-   .search {
-    border-radius: 5px;
-    background-color: #f1f1f1;
-    padding: 0.4rem;
-    margin-left: 0.5rem;
-  }
-   .search svg {
-    height: 16px;
-    fill: #000000;
-  }
-   .search input {
-    border: none;
-    background-color: transparent;
-    outline: none;
-  }
-   .list-data {
-    width: 100%;
-    margin-top: 1rem;
-  }
-   .list-data .schema {
-    display: flex;
-    text-align: start;
-  }
-   .schema .no {
-    width: 20%;
-  }
-   .schema .id {
-    width: 25%;
-  }
-   .schema .name {
-    width: 25%;
-  }
-   .schema .price {
-    width: 10%;
-  }
-   .action {
-    width: 20%;
-  }
-   .pepole .pepole1 {
-    display: flex;
-    text-align: start;
-    margin-top: 1rem;
-  }
-   .pepole1 .no {
-    width: 20%;
-  }
-  .id {
-    width: 25%;
-  }
-   .name {
-    width: 25%;
-  }
-   .price {
-    width: 10%;
-  }
-  .action {
-    width: 20%;
-  }
-  .action svg {
-    margin: 0 0.3rem;
-  }/*# sourceMappingURL=cashier.css.map */
+  } */
+.table-management {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-management-container {
+  width: 25rem;
+  height: 13rem;
+  background-color: #34332f;
+  border-radius: 10px;
+}
+
+.table-management-container h3 {
+  text-align: center;
+  color: white;
+}
+
+.input-table-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.input-table-num p {
+  color: white;
+}
+
+.input-table-num input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.button {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  padding-right: 2rem;
+  margin-top: 3rem;
+}
+
+.button .cancle {
+  padding: 0.5rem;
+  border: 1px solid red;
+  color: red;
+  background-color: transparent;
+}
+
+.button .done {
+  padding: 0.4rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #00bed2;
+}
+
+/*# sourceMappingURL=log-out.css.map */
+/* all cashier */
+.all-cashier {
+  width: 70%;
+  /* padding: 0 5rem; */
+  display: flex;
+  gap: 1rem;
+}
+
+.category-navbar {
+  width: 30%;
+  background-color: #484745;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 1rem;
+  color: #f1f1f1;
+}
+
+#iced {
+  color: #000000;
+  background-color: #f1f1f1;
+  padding: 1rem;
+}
+
+.add-category svg {
+  height: 16px;
+  fill: white;
+}
+
+.header-list-data {
+  width: 70%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-search {
+  display: flex;
+  align-items: center;
+}
+
+.btn button {
+  background-color: #00bfcb;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.btn button svg {
+  height: 16px;
+  fill: #ffffff;
+}
+
+.search {
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+}
+
+.search svg {
+  height: 16px;
+  fill: #000000;
+}
+
+.search input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.list-data {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.list-data .schema {
+  display: flex;
+  text-align: start;
+}
+
+.schema .no {
+  width: 20%;
+}
+
+.schema .id {
+  width: 25%;
+}
+
+.schema .name {
+  width: 25%;
+}
+
+.schema .price {
+  width: 10%;
+}
+
+.action {
+  width: 20%;
+}
+
+.pepole .pepole1 {
+  display: flex;
+  text-align: start;
+  margin-top: 1rem;
+}
+
+.pepole1 .no {
+  width: 20%;
+}
+
+.id {
+  width: 25%;
+}
+
+.name {
+  width: 25%;
+}
+
+.price {
+  width: 10%;
+}
+
+.action {
+  width: 20%;
+}
+
+.action svg {
+  margin: 0 0.3rem;
+}
+
+/*# sourceMappingURL=cashier.css.map */
