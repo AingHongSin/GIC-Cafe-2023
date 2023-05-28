@@ -1,0 +1,141 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container-table{
+    height: 100vh;
+}
+.label{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.label .text{
+    height: 100%;
+    width:200px;
+    display: flex;
+}
+.text span{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.calender{
+    height: 100%;
+    width: 210px;
+    display: flex;
+}
+.calender p{
+    margin-top: 8px;
+}
+.addTable {
+    height: 100%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.addTable button{
+    height: 90%;
+    width: 130px;
+    background-color: rgb(165, 165, 165);
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    display: flex;
+}
+.addTable button span{
+    margin-left: 7px;
+    margin-top: 12px;
+    font-size: 13px;
+}
+ion-icon{
+    margin-top: 11px;
+    margin-left: 15px;
+    font-size: 17px;
+}
+
+.selection{
+    height: 672px;
+    width: 100%;
+    display: flex;
+    margin-top:3%;
+}
+.table-list{
+    width: 55%;
+    height: 100%;
+}
+.label-table{
+    height: 10%;
+    width: 100%;
+    display: flex;
+}
+    .label-table h2{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.table-button{
+    width: 100%;
+    height: 86.2%;
+    margin-top: 3%;
+}
+.btn{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 44px;
+
+}
+.btn div{
+    width: 110.07px;
+    height: 93px;
+    background-color: #E4E4E4;
+    border-style: none;
+
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 10px;
+
+}
+
+.btn .delivery {
+    background-color: #C7283C;
+    color: white;
+
+}
+
+.btn div:hover {
+    background-color: #32BBCB;
+    color: white;
+
+}
+
+
+.table-information{
+    width: 45%;
+    height: 100%;
+}
+.text-iformation{
+    width: 100%;
+    height: 30%;
+}
+.text-iformation h2{
+    text-align: center;
+}
+.text-iformation span {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+
+}
