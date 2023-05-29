@@ -163,13 +163,24 @@ body {
   width: 20%;
 }
 
+.action button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
 .pepole, .schema  {
   width: 90%;
 }
- .pepole .pepole1 {
+ .pepole .people1 {
   display: flex;
   text-align: start;
   margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 
   height: 40px;
   display: flex;
@@ -179,12 +190,12 @@ body {
   cursor: pointer;
 }
 
-.pepole .pepole1:hover {
-  background-color: #d8d8d8;
+.pepole .people1:hover {
+  background-color: #dbdbdb;
 
 }
 
- .pepole1 .id {
+ .people1 .id {
   width: 20%;
 }
 .name {
@@ -196,9 +207,3 @@ body {
  .db {
   width: 25%;
 }
-.action {
-  width: 20%;
-}
-.action svg {
-  margin: 0 0.3rem;
-}/*# sourceMappingURL=cashier.css.map */
