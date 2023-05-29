@@ -16,6 +16,10 @@
     border-radius: 0 10px 10px 0;
 }
 
+.sidebar-container a {
+    text-decoration: none;
+}
+
 .sidebar-header {
     display: flex;
     justify-content: center;

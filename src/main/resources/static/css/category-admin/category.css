@@ -2,9 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-  display: flex;
-  flex-grow: 2;
+  
 }
 
 #ADMIN-SIDEBAR {
@@ -17,7 +15,7 @@ body {
 
 .container {
   position: fixed;
-  /* width: calc(100% - 350px); */
+  width: calc(100% - 330px);
   right: 0;
   height: 100vh;
   display: flex;
@@ -177,10 +175,10 @@ header {
   justify-content: space-between;
 }
 
-.btn-search {
+/* .btn-search {
   display: flex;
   align-items: center;
-}
+} */
 
 .btn button {
   background-color: #00bfcb;
@@ -194,7 +192,7 @@ header {
   fill: #ffffff;
 }
 
-.search {
+/* .search {
   border-radius: 5px;
   background-color: #f1f1f1;
   padding: 0.4rem;
@@ -210,7 +208,7 @@ header {
   border: none;
   background-color: transparent;
   outline: none;
-}
+} */
 
 .list-data {
   width: 100%;

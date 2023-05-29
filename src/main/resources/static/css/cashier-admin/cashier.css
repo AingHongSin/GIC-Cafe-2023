@@ -1,0 +1,204 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+
+}
+
+#ADMIN-SIDEBAR {
+  position: fixed;
+  width: 330px;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  height: 100vh;
+  /* display: flex; */
+  width: calc(100% - 330px);
+
+  position: fixed;
+  right: 0;
+}
+
+.container header {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.title {
+  width: 100%;
+  height: 30px;
+}
+
+ .table-management {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ .table-management-container {
+  width: 25rem;
+  height: 13rem;
+  background-color: #34332f;
+  border-radius: 10px;
+}
+ .table-management-container h3 {
+  text-align: center;
+  color: white;
+}
+ .input-table-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+ .input-table-num p {
+  color: white;
+}
+ .input-table-num input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+ .button {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  padding-right: 2rem;
+  margin-top: 3rem;
+}
+ .button .cancle {
+  padding: 0.5rem;
+  border: 1px solid red;
+  color: red;
+  background-color: transparent;
+}
+ .button .done {
+  padding: 0.4rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #00bed2;
+}/*# sourceMappingURL=log-out.css.map */
+/* all cashier */
+
+ header {
+  display: flex;
+  justify-content: space-between;
+}
+ .btn-search {
+  display: flex;
+  align-items: center;
+}
+
+.btn-container {
+  display: flex;
+  width: 100px;
+  justify-content: center;
+  margin-top: 20px;
+
+}
+ .btn-container button {
+  background-color: #00bfcb;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 50px;
+  height: 50px;
+}
+
+ /* .search {
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+}
+ .search svg {
+  height: 16px;
+  fill: #000000;
+}
+ .search input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+} */
+ .list-data {
+  width: 100%;
+  margin: auto;
+  margin-top: 1rem;
+
+  font-size: 23px;
+  font-weight: 400;
+}
+ .list-data .schema {
+  display: flex;
+  text-align: start;
+  padding: 3px;
+
+}
+ .schema .id {
+  width: 20%;
+}
+ .schema .name {
+  width: 25%;
+}
+ .schema .sex {
+  width: 10%;
+}
+ .schema .db {
+  width: 25%;
+}
+ .action {
+  width: 20%;
+}
+
+.pepole, .schema  {
+  width: 90%;
+}
+ .pepole .pepole1 {
+  display: flex;
+  text-align: start;
+  margin-top: 1rem;
+
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+
+  cursor: pointer;
+}
+
+.pepole .pepole1:hover {
+  background-color: #d8d8d8;
+
+}
+
+ .pepole1 .id {
+  width: 20%;
+}
+.name {
+  width: 25%;
+}
+ .sex {
+  width: 10%;
+}
+ .db {
+  width: 25%;
+}
+.action {
+  width: 20%;
+}
+.action svg {
+  margin: 0 0.3rem;
+}/*# sourceMappingURL=cashier.css.map */

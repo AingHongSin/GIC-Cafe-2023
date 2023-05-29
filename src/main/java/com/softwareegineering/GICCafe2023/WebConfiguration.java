@@ -1,4 +1,4 @@
-package group2.gic32.cafeGIC;
+package com.softwareegineering.GICCafe2023;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

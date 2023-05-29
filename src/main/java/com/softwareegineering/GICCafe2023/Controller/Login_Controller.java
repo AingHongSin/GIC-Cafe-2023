@@ -1,6 +1,6 @@
-package group2.gic32.cafeGIC.Controller;
+package com.softwareegineering.GICCafe2023.Controller;
 
-import group2.gic32.cafeGIC.DatabaseManagement.UserManagement;
+import com.softwareegineering.GICCafe2023.DatabaseManagement.UserManagement;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +27,7 @@ public class Login_Controller {
 
         if (isValidCredentials) {
             // Redirect to a success page or perform other actions
-            return new ModelAndView("categorymanagement");
+            return new ModelAndView("redirect:/categorymanagement");
         } else {
             // Redirect back to the login page with an error message
             ModelAndView modelAndView = new ModelAndView("login");

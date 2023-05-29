@@ -1,4 +1,4 @@
-package group2.gic32.cafeGIC.Controller;
+package com.softwareegineering.GICCafe2023.Controller;
 
 
 import org.springframework.stereotype.Controller;

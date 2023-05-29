@@ -1,6 +1,7 @@
-package group2.gic32.cafeGIC.Model;
+package com.softwareegineering.GICCafe2023.Model;
 
 import java.util.Date;
+import java.util.Map;
 
 public class User {
     private int id;
@@ -11,9 +12,23 @@ public class User {
     private int age;
     private String username;
     private String password;
+    private Map<String, Object> attributes;
 
     public User() {
-        // Default constructor
+        
+    }
+
+    public User(int id, String firstName, String lastName, String sex, Date dob, int age, String username,
+            String password, Map<String, Object> attributes) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.dob = dob;
+        this.age = age;
+        this.username = username;
+        this.password = password;
+        this.attributes = attributes;
     }
 
     // Getters and Setters
@@ -79,6 +94,17 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    // Method to add attributes
+    public void addAttribute(String attributeName, Object attributeValue) {
+        attributes.put(attributeName, attributeValue);
+    }
+
+    // Method to get attributes
+    public Object getAttribute(String attributeName) {
+        return attributes.get(attributeName);
     }
 }
 

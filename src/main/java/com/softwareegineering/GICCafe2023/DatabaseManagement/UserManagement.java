@@ -1,6 +1,6 @@
-package group2.gic32.cafeGIC.DatabaseManagement;
+package com.softwareegineering.GICCafe2023.DatabaseManagement;
 
-import group2.gic32.cafeGIC.Model.*;
+import com.softwareegineering.GICCafe2023.Model.*;
 import java.sql.*;
 
 import java.util.ArrayList;
