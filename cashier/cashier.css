@@ -1,0 +1,198 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  height: 100vh;
+  display: flex;
+}
+ .navbar-section {
+  width: 30%;
+  height: 100%;
+  background-color: #34332f;
+}
+ .navbar-logo {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+}
+ .navbar-logo-title {
+  width: 50%;
+}
+ .navbar-logo-title img {
+  width: 100%;
+}
+ .navbar-logo-title h2 {
+  color: white;
+  font-size: 2rem;
+}
+ .navbar-content {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+ .navbar #category {
+  background-color: white;
+  padding: 1rem;
+}
+ .navbar #category img {
+  width: 16px;
+}
+ .navbar #category span {
+  color: rgb(255, 255, 255);
+}
+ .navbar .navbar-item {
+  padding: 1rem;
+}
+.navbar-item img {
+  width: 16px;
+}
+ .navbar-item span {
+  color: white;
+}
+ .log-out .navbar-item {
+  padding: 1rem;
+}
+ .log-out .navbar-item img {
+  width: 16px;
+}
+ .log-out .navbar-item span {
+  color: white;
+}
+ .table-management {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ .table-management-container {
+  width: 25rem;
+  height: 13rem;
+  background-color: #34332f;
+  border-radius: 10px;
+}
+ .table-management-container h3 {
+  text-align: center;
+  color: white;
+}
+ .input-table-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+ .input-table-num p {
+  color: white;
+}
+ .input-table-num input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+ .button {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  padding-right: 2rem;
+  margin-top: 3rem;
+}
+ .button .cancle {
+  padding: 0.5rem;
+  border: 1px solid red;
+  color: red;
+  background-color: transparent;
+}
+ .button .done {
+  padding: 0.4rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #00bed2;
+}/*# sourceMappingURL=log-out.css.map */
+/* all cashier */
+ .all-cashier {
+  width: 70%;
+  padding: 0 5rem;
+}
+ header {
+  display: flex;
+  justify-content: space-between;
+}
+ .btn-search {
+  display: flex;
+  align-items: center;
+}
+ .btn button {
+  background-color: #00bfcb;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+ .btn button svg {
+  height: 16px;
+  fill: #ffffff;
+}
+ .search {
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+}
+ .search svg {
+  height: 16px;
+  fill: #000000;
+}
+ .search input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+ .list-data {
+  width: 100%;
+  margin-top: 1rem;
+}
+ .list-data .schema {
+  display: flex;
+  text-align: start;
+}
+ .schema .id {
+  width: 20%;
+}
+ .schema .name {
+  width: 25%;
+}
+ .schema .sex {
+  width: 10%;
+}
+ .schema .db {
+  width: 25%;
+}
+ .action {
+  width: 20%;
+}
+ .pepole .pepole1 {
+  display: flex;
+  text-align: start;
+  margin-top: 1rem;
+}
+ .pepole1 .id {
+  width: 20%;
+}
+.name {
+  width: 25%;
+}
+ .sex {
+  width: 10%;
+}
+ .db {
+  width: 25%;
+}
+.action {
+  width: 20%;
+}
+.action svg {
+  margin: 0 0.3rem;
+}/*# sourceMappingURL=cashier.css.map */
