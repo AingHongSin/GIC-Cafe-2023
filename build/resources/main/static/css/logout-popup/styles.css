@@ -1,36 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-body{
+/* body{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: gray;
-}
-.container{
-    width: 17rem;
-    height: 10rem;
-    border-radius: 5px;
+} */
+.logout-container{
+    width: 435px;
+    height: 269px;
+    border-radius: 12px;
     background-color: rgb(255, 255, 255);
+
+    padding: 20px;
     display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
     justify-content: center;
-    align-items: center;
+
     text-align: center;
 }
-.cancel{
-    padding: .5rem 2rem;
-    color: red;
-    border: 1px solid red;
+
+.logout-container h3, h2 {
+    margin: auto;
+    width: 90%;
+
+    border-collapse: collapse;
+
+}
+
+.logout-container form {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+.logout-container button {
+    border-radius: 5px;
+    height: 55.69px;
+    width: 1508px;
+    font-size: 17px;
+    font-weight: 500;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logout-container .cancel{
+
+    color: #C7283C;
+    border: 1px solid #C7283C;
     background-color: transparent;
 }
-.done{
-    padding: .6rem 2rem;
-    color: white;
-    background-color: #00bece;
+.logout-container .add{
     border: none;
-    border-radius: 5px;
-    margin-left: 1rem;
+    color: #ffffff;
+    background-color: #32BBCB;
 }
-svg{
-    fill: white;
+
+.logout-container button svg{
+    margin-right: 20px;
+    
 }

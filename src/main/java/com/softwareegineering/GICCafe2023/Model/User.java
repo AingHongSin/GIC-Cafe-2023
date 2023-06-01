@@ -2,8 +2,7 @@ package com.softwareegineering.GICCafe2023.Model;
 
 import java.util.Date;
 
-public class User {
-    private int id;
+public class User extends Model {
     private String firstName;
     private String lastName;
     private String sex;
@@ -12,6 +11,7 @@ public class User {
     private int age;
     private String username;
     private String password;
+    private String image_url;
 
     public User(String username, String password) {
         this.username = username;
@@ -19,8 +19,8 @@ public class User {
     }
 
     public User(int id, String firstName, String lastName, String sex, String role, Date dob, int age, String username,
-            String password) {
-        this.id = id;
+            String password, String image_url) {
+        super(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
@@ -29,6 +29,7 @@ public class User {
         this.age = age;
         this.username = username;
         this.password = password;
+        this.image_url = image_url;
     }
 
     public User() {
@@ -36,10 +37,6 @@ public class User {
     }
 
     // Getters and Setters
-
-    public int getId() { return id; }
-
-    public void setId(int id) { this.id = id; }
 
     public String getFirstName() {  return firstName; }
 
@@ -72,4 +69,13 @@ public class User {
     public String getPassword() { return password;}
 
     public void setPassword(String password) { this.password = password; }
+
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
 }

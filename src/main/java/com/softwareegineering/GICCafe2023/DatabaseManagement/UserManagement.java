@@ -1,83 +1,105 @@
 package com.softwareegineering.GICCafe2023.DatabaseManagement;
 
 import com.softwareegineering.GICCafe2023.Model.*;
-import java.sql.*;
 
-import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
-public class UserManagement {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/gic_coffee";
-    private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "";
+public class UserManagement extends Management<User> {
+    @Override
+    protected User mapRowToModel(ResultSet rs) throws SQLException {
+        int userId = rs.getInt("user_id");
+        String firstName = rs.getString("first_name");
+        String lastName = rs.getString("last_name");
+        String sex = rs.getString("sex");
+        String role = rs.getString("role");
+        Date dob = rs.getDate("dob");
+        int age = rs.getInt("age");
+        String username = rs.getString("username");
+        String password = rs.getString("password");
+        String imageUrl = rs.getString("image_url");
+        return new User(userId, firstName, lastName, sex, role, dob, age, username, password, imageUrl);
+    }
 
     public List<User> getAllUsers() {
-        List<User> userList = new ArrayList<>();
+        String query = "SELECT * FROM user";
+        return getAll(query);
+    }
+    
+    public void addUser(User user) {
+        String query = "INSERT INTO user (first_name, last_name, sex, role, dob, age, username, password, image_url) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+            stmt.setString(1, user.getFirstName());
+            stmt.setString(2, user.getLastName());
+            stmt.setString(3, user.getSex());
+            stmt.setString(4, user.getRole());
+            stmt.setDate(5, new java.sql.Date(user.getDob().getTime()));
+            stmt.setInt(6, user.getAge());
+            stmt.setString(7, user.getUsername());
+            stmt.setString(8, user.getPassword());
+            stmt.setString(9, user.getImage_url());
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM user")) {
-
-            while (rs.next()) {
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setSex(rs.getString("sex"));
-                user.setRole(rs.getString("role"));
-                user.setDob(rs.getDate("dob"));
-                user.setAge(rs.getInt("age"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-
-                userList.add(user);
+            int rowsInserted = stmt.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("User added successfully");
+            } else {
+                System.out.println("Failed to add user");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return userList;
     }
 
-    public static boolean loginUser(String username, String password) {
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
-            String query = "SELECT COUNT(*) FROM user WHERE username = ? AND password = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(query)) {
-                stmt.setString(1, username);
-                stmt.setString(2, password);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        int count = rs.getInt(1);
-                        return count > 0; // User found, login successful
-                    }
-                }
+    public void updateUser(User user) {
+        String query = "UPDATE user SET first_name = ?, last_name = ?, sex = ?, role = ?, dob = ?, age = ?, " +
+                "username = ?, password = ?, image_url = ? WHERE user_id = ?";
+        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+            stmt.setString(1, user.getFirstName());
+            stmt.setString(2, user.getLastName());
+            stmt.setString(3, user.getSex());
+            stmt.setString(4, user.getRole());
+            stmt.setDate(5, new java.sql.Date(user.getDob().getTime()));
+            stmt.setInt(6, user.getAge());
+            stmt.setString(7, user.getUsername());
+            stmt.setString(8, user.getPassword());
+            stmt.setString(9, user.getImage_url());
+            stmt.setInt(10, user.getId());
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("User updated successfully");
+            } else {
+                System.out.println("Failed to update user");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false; // User not found or invalid credentials
     }
 
-    public User getUserById(int id) {
+    public User getUserByID(int id) {
+        String query = "SELECT * FROM user WHERE user_id = ?";
+        return getById(id, query);
+    }
+
+    public List<User> searchUser(String keyword) {
+        String query = "SELECT * FROM user WHERE username LIKE ?";
+        return query(keyword, query);
+    }
+
+    public User loginUser(String username, String password) {
+        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
         User user = null;
-
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE id = ?")) {
-
-            stmt.setInt(1, id);
+        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    user = new User();
-                    user.setId(rs.getInt("id"));
-                    user.setFirstName(rs.getString("first_name"));
-                    user.setLastName(rs.getString("last_name"));
-                    user.setSex(rs.getString("sex"));
-                    user.setRole(rs.getString("role"));
-                    user.setDob(rs.getDate("dob"));
-                    user.setAge(rs.getInt("age"));
-                    user.setUsername(rs.getString("username"));
-                    user.setPassword(rs.getString("password"));
+                    user = mapRowToModel(rs);
                 }
             }
         } catch (SQLException e) {
@@ -86,48 +108,4 @@ public class UserManagement {
 
         return user;
     }
-
-    public void addUser(User user) {
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO user (first_name, last_name, sex, role, dob, age, username, password) " +
-                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
-
-            stmt.setString(1, user.getFirstName());
-            stmt.setString(2, user.getLastName());
-            stmt.setString(3, user.getSex());
-            stmt.setString(4, user.getRole());
-            stmt.setDate(5, new java.sql.Date(user.getDob().getTime()));
-            stmt.setInt(6, user.getAge());
-            stmt.setString(7, user.getUsername());
-            stmt.setString(8, user.getPassword());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void updateUser(User user) {
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement(
-                     "UPDATE user SET first_name = ?, last_name = ?, sex = ?, role = ?, " +
-                             "dob = ?, age = ?, username = ?, password = ? WHERE id = ?")) {
-
-            stmt.setString(1, user.getFirstName());
-            stmt.setString(2, user.getLastName());
-            stmt.setString(3, user.getSex());
-            stmt.setString(4, user.getRole());
-            stmt.setDate(5, new java.sql.Date(user.getDob().getTime()));
-            stmt.setInt(6, user.getAge());
-            stmt.setString(7, user.getUsername());
-            stmt.setString(8, user.getPassword());
-            stmt.setInt(9, user.getId());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

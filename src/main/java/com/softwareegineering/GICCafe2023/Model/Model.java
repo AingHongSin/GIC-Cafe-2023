@@ -1,20 +1,25 @@
 package com.softwareegineering.GICCafe2023.Model;
 
-import java.util.HashMap;
-import java.util.Map;
+public abstract class Model {
+    private int id;
 
-public class Model {
-    private Map<String, Object> attributes;
+    // Constructor
 
     public Model() {
-        attributes = new HashMap<>();
+        // Default constructor
     }
 
-    public void addAttribute(String attributeName, Object attributeValue) {
-        attributes.put(attributeName, attributeValue);
+    public Model(int id) {
+        this.id = id;
     }
 
-    public Object getAttribute(String attributeName) {
-        return attributes.get(attributeName);
+    // Getter and Setter for ID
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

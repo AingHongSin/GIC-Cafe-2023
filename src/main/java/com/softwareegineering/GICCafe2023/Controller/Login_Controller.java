@@ -1,6 +1,7 @@
 package com.softwareegineering.GICCafe2023.Controller;
 
 import com.softwareegineering.GICCafe2023.DatabaseManagement.UserManagement;
+import com.softwareegineering.GICCafe2023.Model.User;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,12 +23,19 @@ public class Login_Controller {
                             @RequestParam("username") String username,
                             @RequestParam("password") String password) {
         // Validate the credentials and perform login logic
-        boolean isValidCredentials = UserManagement.loginUser(username, password);
+
+        UserManagement usermanagement = new UserManagement();
+
+        User user = usermanagement.loginUser(username, password);
         
 
-        if (isValidCredentials) {
+        if (user != null) {
             // Redirect to a success page or perform other actions
-            return new ModelAndView("redirect:/categorymanagement");
+            
+            if (user.getRole().equals("Admin")) return new ModelAndView("redirect:/categorymanagement");
+            else if (user.getRole().equals("Cashier")) return new ModelAndView("redirect:/tableselection");
+
+            return new ModelAndView("login");
         } else {
             // Redirect back to the login page with an error message
             ModelAndView modelAndView = new ModelAndView("login");

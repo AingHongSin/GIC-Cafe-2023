@@ -33,6 +33,8 @@ body {
 .container header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 
 }
 
@@ -97,7 +99,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
- .btn-search {
+ .header-Rightside {
   display: flex;
   align-items: center;
 }
@@ -161,6 +163,7 @@ body {
 }
  .action {
   width: 20%;
+  display: flex;
 }
 
 .action button {
@@ -168,8 +171,16 @@ body {
   height: 40px;
   background-color: transparent;
   border: none;
-
+  
   cursor: pointer;
+}
+
+.header-Rightside .action .button {
+  justify-content: space-between;
+  font-size: 17px;
+  display: flex;
+  width: 100px;
+  align-items: center;
 }
 
 .pepole, .schema  {
