@@ -20,6 +20,12 @@ public class CategoryManagemet extends Management<Category> {
         return category;
     }
 
+    @Override
+    protected void setStatementParams(PreparedStatement stmt, Category category) throws SQLException {
+        stmt.setString(1, category.getCategoryName());
+        stmt.setInt(2, category.getId());
+    }
+
     public int addCategory(Category category) {
         String query = "INSERT INTO category (category_name) VALUES (?)";
 
@@ -49,22 +55,7 @@ public class CategoryManagemet extends Management<Category> {
 
     public void updateCategory(Category category) {
         String query = "UPDATE category SET category_name = ? WHERE category_id = ?";
-
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, category.getCategoryName());
-            stmt.setInt(2, category.getId());
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Category updated successfully");
-            } else {
-                System.out.println("No category found with the given ID");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        update(category, query);
     }
 
     public List<Category> getAllCategories() {

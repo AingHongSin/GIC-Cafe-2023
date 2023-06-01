@@ -1,10 +1,12 @@
 package com.softwareegineering.GICCafe2023.DatabaseManagement;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +16,75 @@ public abstract class Management<T> {
     private static final String DB_PASSWORD = "";
 
     protected abstract T mapRowToModel(ResultSet rs) throws SQLException;
+    protected abstract void setStatementParams(PreparedStatement stmt, T model) throws SQLException;
 
     protected Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
 
+    protected void setStatementParams(PreparedStatement stmt, Object... params) throws SQLException {
+        for (int i = 0; i < params.length; i++) {
+            Object param = params[i];
+            int parameterIndex = i + 1;
+
+            if (param instanceof String) {
+                stmt.setString(parameterIndex, (String) param);
+            } else if (param instanceof Integer) {
+                stmt.setInt(parameterIndex, (Integer) param);
+            } else if (param instanceof Double) {
+                stmt.setDouble(parameterIndex, (Double) param);
+            } else if (param instanceof Float) {
+                stmt.setFloat(parameterIndex, (Float) param);
+            } else if (param instanceof Boolean) {
+                stmt.setBoolean(parameterIndex, (Boolean) param);
+            } else if (param instanceof Date) {
+                stmt.setDate(parameterIndex, (Date) param);
+            } else {
+                stmt.setObject(parameterIndex, param);
+            }
+        }
+    }
+
+    public int add(T model, String query) {
+        int generatedId = -1;
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
+            setStatementParams(stmt, model);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                try (ResultSet rs = stmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        generatedId = rs.getInt(1);
+                        System.out.println("Record added successfully with ID: " + generatedId);
+                    }
+                }
+            } else {
+                System.out.println("Failed to add the record");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return generatedId;
+    
+    }
+
+    public void update(T model, String query) {
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            setStatementParams(stmt, model);
+            stmt.executeUpdate();
+            
+            System.out.println("Record updated successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void delete(int id, String query) {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

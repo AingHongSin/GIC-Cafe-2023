@@ -20,6 +20,12 @@ public class SizeManagement extends Management<Size> {
         return size;
     }
 
+    @Override
+    protected void setStatementParams(PreparedStatement stmt, Size size) throws SQLException {
+        stmt.setString(1, size.getSizeName());
+        stmt.setDouble(2, size.getPrice());
+    }
+    
     public void addSize(Size size) {
         String query = "INSERT INTO size (size_name, price) VALUES (?, ?)";
 

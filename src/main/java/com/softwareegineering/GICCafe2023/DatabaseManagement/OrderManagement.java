@@ -3,7 +3,6 @@ package com.softwareegineering.GICCafe2023.DatabaseManagement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.softwareegineering.GICCafe2023.Model.Order;
@@ -17,6 +16,12 @@ public class OrderManagement extends Management<Order> {
         order.setDateCreated(rs.getDate("date_created"));
         order.setStatus(rs.getString("status"));
         return order;
+    }
+    @Override
+    protected void setStatementParams(PreparedStatement stmt, Order order) throws SQLException {
+        stmt.setInt(1, order.getUserId());
+        stmt.setTimestamp(2, new java.sql.Timestamp(order.getDateCreated().getTime()));
+        stmt.setString(3, order.getStatus());
     }
 
     public void addOrder(Order order) {

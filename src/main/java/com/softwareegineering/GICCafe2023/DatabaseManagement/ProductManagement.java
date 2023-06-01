@@ -24,6 +24,16 @@ public class ProductManagement extends Management<Product> {
         return new Product(productId, name, description, type, size, category, image_url);
     }
 
+    @Override
+    protected void setStatementParams(PreparedStatement stmt, Product product) throws SQLException {
+        stmt.setString(1, product.getName());
+        stmt.setString(2, product.getDescription());
+        stmt.setString(3, product.getType());
+        stmt.setInt(4, product.getSize().getId());
+        stmt.setInt(5, product.getCategory().getId());
+        stmt.setString(6, product.getImage_url());
+    }
+
     private Size getSizeById(int sizeId) {
         SizeManagement sizeManagement = new SizeManagement();
         return sizeManagement.getSizeById(sizeId);

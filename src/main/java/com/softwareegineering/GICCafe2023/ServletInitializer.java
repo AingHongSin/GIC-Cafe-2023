@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(CafeGicApplication.class);
+		return application.sources(GicCafe2023Application.class);
 	}
 
 }
