@@ -2,9 +2,8 @@ package com.softwareegineering.GICCafe2023.Controller;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,33 +24,69 @@ public class Cashire_Controller {
     @GetMapping(path = "/cashiermanagement")
     public ModelAndView displayPage(Model model) {
 
-        var tmpUser = getUser();
-
-        model.addAttribute("users", tmpUser);
+        model.addAttribute("users", getUser());
 
         return new ModelAndView("cashiermanagement");
     }
 
     @PostMapping("/cashiermanagement")
-    public ModelAndView addUserView( @RequestParam("firstname") String firstname,
+    public ModelAndView addUserView( 
+                                @RequestParam("userID") String userIDStr,
+                                @RequestParam("firstname") String firstname,
                                 @RequestParam("lastname") String lastname,
                                 @RequestParam("sex") String sex,
                                 @RequestParam("role") String role,
-                                @RequestParam("dob")  @DateTimeFormat(pattern = "yyyy-MM-dd") Date dob,
+                                @RequestParam("dob")  @DateTimeFormat(pattern = "yyyy-MM-dd") java.util.Date dobUtil,
                                 @RequestParam("username") String username,
                                 @RequestParam("password") String password,
                                 @RequestParam("photo_url") String photo_url,
                                 Model model
     ) {
+
+        Date dob = new Date(dobUtil.getTime());
+
         var age = getAge(dob);
-        User user = new User(0, firstname, lastname, sex, role, dob, age, username, password, photo_url);
-        addUser(user);
+
+        var userID = Integer.valueOf(userIDStr);
+        if (userID == 0) {
+            LocalDate currentDate = LocalDate.now();
+            Date hireDate = Date.valueOf(currentDate);
+
+            User user = new User(userID, firstname, lastname, sex, role, dob, hireDate, age, username, password, photo_url);
+            addUser(user);
+        } else {
+            User user = new User(userID, firstname, lastname, sex, role, dob, age, username, password, photo_url);
+            updateUser(user);
+        }
+
+        model.addAttribute("users", getUser());
         return new ModelAndView("redirect:/cashiermanagement");
     }
+
+    @GetMapping("/cashiermanagement/delUser")
+    public ModelAndView delUserHandler(@RequestParam("deleteUserId") String userIdStr, 
+                                        Model model) {
+
+        System.out.println("User id: " + userIdStr);
+
+        int userID = Integer.valueOf(userIdStr);
+        
+        UserManagement userManagement = new UserManagement();
+        userManagement.disableUser(userID);
+
+        model.addAttribute("users", getUser());
+        return new ModelAndView("cashiermanagement");
+        }
+
 
     private int addUser(User user) {
         UserManagement userManagement = new UserManagement();
         return userManagement.addUser(user);
+    }
+
+    private void updateUser(User user) {
+        UserManagement userManagement = new UserManagement();
+        userManagement.updateUser(user);
     }
 
     private List<User> getUser() {
@@ -65,12 +100,9 @@ public class Cashire_Controller {
     }
 
     private int getAge(Date inputDate) {
-
-        LocalDate dateOfBirth = inputDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-        
+        LocalDate localDobDate = inputDate.toLocalDate();     
         LocalDate currentDate = LocalDate.now();
-        Period period = Period.between(dateOfBirth, currentDate);
+        Period period = Period.between(localDobDate, currentDate);
         return period.getYears();
     }
     

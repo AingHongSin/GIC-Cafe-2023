@@ -22,11 +22,13 @@ public abstract class Management<T> {
         return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
 
-    protected void setStatementParams(PreparedStatement stmt, Object... params) throws SQLException {
-        for (int i = 0; i < params.length; i++) {
+    protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, Object... params) throws SQLException {
+        int parameterCount = params.length;
+
+        for (int i = 0; i < parameterCount; i++) {
             Object param = params[i];
             int parameterIndex = i + 1;
-
+    
             if (param instanceof String) {
                 stmt.setString(parameterIndex, (String) param);
             } else if (param instanceof Integer) {
@@ -43,6 +45,10 @@ public abstract class Management<T> {
                 stmt.setObject(parameterIndex, param);
             }
         }
+            // Parameter specific to the add operation
+        if (isAddOperation) {
+
+        }
     }
 
     public int add(T model, String query) {
@@ -51,7 +57,7 @@ public abstract class Management<T> {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            setStatementParams(stmt, model);
+            setStatementParams(true, stmt, model);
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -76,7 +82,7 @@ public abstract class Management<T> {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            setStatementParams(stmt, model);
+            setStatementParams(false, stmt, model);
             stmt.executeUpdate();
             
             System.out.println("Record updated successfully");
@@ -94,6 +100,23 @@ public abstract class Management<T> {
             int rowsDeleted = stmt.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Record deleted successfully");
+            } else {
+                System.out.println("No record found with the given ID");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void disable(int id, String query) {
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Disabled successfully");
             } else {
                 System.out.println("No record found with the given ID");
             }

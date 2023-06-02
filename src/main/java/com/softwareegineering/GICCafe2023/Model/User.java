@@ -1,6 +1,6 @@
 package com.softwareegineering.GICCafe2023.Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class User extends Model {
     private String firstName;
@@ -8,15 +8,15 @@ public class User extends Model {
     private String sex;
     private String role;
     private Date dob;
+    private Date hireDate;
     private int age;
     private String username;
     private String password;
     private String image_url;
+    private int served;
+    private Date lastLogin;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+
 
     public User(int id, String firstName, String lastName, String sex, String role, Date dob, int age, String username,
             String password, String image_url) {
@@ -31,6 +31,51 @@ public class User extends Model {
         this.password = password;
         this.image_url = image_url;
     }
+
+
+
+    public User(int id, String firstName, String lastName, String sex, String role, Date dob, Date hireDate, int age,
+            String username, String password, String image_url) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.role = role;
+        this.dob = dob;
+        this.hireDate = hireDate;
+        this.age = age;
+        this.username = username;
+        this.password = password;
+        this.image_url = image_url;
+    }
+
+
+
+    public User(int id, String firstName, String lastName, String sex, String role, Date dob, Date hireDate, int age,
+            String username, String password, String image_url, int served, Date lastLogin) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.role = role;
+        this.dob = dob;
+        this.hireDate = hireDate;
+        this.age = age;
+        this.username = username;
+        this.password = password;
+        this.image_url = image_url;
+        this.served = served;
+        this.lastLogin = lastLogin;
+    }
+
+
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+
 
     public User() {
         // Default constructor
@@ -78,4 +123,26 @@ public class User extends Model {
     public void setImage_url(String image_url) {
         this.image_url = image_url;
     }
+    public int getServed() {
+        return served;
+    }
+
+    public void setServed(int served) {
+        this.served = served;
+    }
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+    public Date getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(Date hireDate) {
+        this.hireDate = hireDate;
+    }
+
 }

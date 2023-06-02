@@ -1,6 +1,6 @@
 package com.softwareegineering.GICCafe2023.Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Order extends Model {
     private int userId;

@@ -16,13 +16,16 @@ public class ProductManagement extends Management<Product> {
         int sizeId = rs.getInt("size_id");
         int categoryId = rs.getInt("category_id");
         String image_url = rs.getString("image_url");
-
+        Date lastOrder = rs.getDate("last_order");
+        int orderCount = rs.getInt("order_count");
+    
         // Retrieve the corresponding Size and Category objects
         Size size = getSizeById(sizeId);
         Category category = getCategoryById(categoryId);
-
-        return new Product(productId, name, description, type, size, category, image_url);
+    
+        return new Product(productId, name, description, type, size, category, image_url, lastOrder, orderCount);
     }
+    
 
     @Override
     protected void setStatementParams(PreparedStatement stmt, Product product) throws SQLException {
@@ -32,6 +35,8 @@ public class ProductManagement extends Management<Product> {
         stmt.setInt(4, product.getSize().getId());
         stmt.setInt(5, product.getCategory().getId());
         stmt.setString(6, product.getImage_url());
+        stmt.setDate(7, new java.sql.Date(product.getLastOrder().getTime()));
+        stmt.setInt(8, product.getOrderCount());
     }
 
     private Size getSizeById(int sizeId) {
@@ -70,51 +75,18 @@ public class ProductManagement extends Management<Product> {
     }
     
 
-    public void addProduct(Product product) {
-        String query = "INSERT INTO product (name, description, type, size_id, category_id) " +
-                       "VALUES (?, ?, ?, ?, ?)";
+    public int addProduct(Product product) {
+        String query = "INSERT INTO product (name, description, type, size_id, category_id, image_url, last_order, order_count) " +
+               "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, product.getName());
-            stmt.setString(2, product.getDescription());
-            stmt.setString(3, product.getType());
-            stmt.setInt(4, product.getSize().getId());
-            stmt.setInt(5, product.getCategory().getId());
-
-            int rowsInserted = stmt.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("Product added successfully");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        return add(product, query);
     }
 
     public void updateProduct(Product product) {
-        String query = "UPDATE product SET name = ?, description = ?, type = ?, size_id = ?, category_id = ? " +
-                       "WHERE product_id = ?";
+        String query = "UPDATE product SET name = ?, description = ?, type = ?, size_id = ?, category_id = ?, image_url = ?, last_order = ?, order_count = ? WHERE product_id = ?";
 
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, product.getName());
-            stmt.setString(2, product.getDescription());
-            stmt.setString(3, product.getType());
-            stmt.setInt(4, product.getSize().getId());
-            stmt.setInt(5, product.getCategory().getId());
-            stmt.setInt(6, product.getId());
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Product updated successfully");
-            } else {
-                System.out.println("No product found with the given ID");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        update(product, query);
     }
 
     public List<Product> getAllProducts() {
