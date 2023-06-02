@@ -13,31 +13,39 @@ public class ProductManagement extends Management<Product> {
         String name = rs.getString("name");
         String description = rs.getString("description");
         String type = rs.getString("type");
-        int sizeId = rs.getInt("size_id");
+        int size_id = rs.getInt("size_id");
         int categoryId = rs.getInt("category_id");
         String image_url = rs.getString("image_url");
         Date lastOrder = rs.getDate("last_order");
         int orderCount = rs.getInt("order_count");
     
         // Retrieve the corresponding Size and Category objects
-        Size size = getSizeById(sizeId);
         Category category = getCategoryById(categoryId);
+        Size size = getSizeById(size_id);
     
         return new Product(productId, name, description, type, size, category, image_url, lastOrder, orderCount);
     }
     
 
     @Override
-    protected void setStatementParams(PreparedStatement stmt, Product product) throws SQLException {
+    protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, Product product) throws SQLException {
         stmt.setString(1, product.getName());
         stmt.setString(2, product.getDescription());
         stmt.setString(3, product.getType());
-        stmt.setInt(4, product.getSize().getId());
-        stmt.setInt(5, product.getCategory().getId());
-        stmt.setString(6, product.getImage_url());
-        stmt.setDate(7, new java.sql.Date(product.getLastOrder().getTime()));
-        stmt.setInt(8, product.getOrderCount());
+        stmt.setInt(4, product.getCategory().getId());
+        stmt.setString(5, product.getImage_url());
+        stmt.setDate(6, new java.sql.Date(product.getLastOrder().getTime()));
+        stmt.setInt(7, product.getOrderCount());
+
+        if (isAddOperation) {
+            // Adjust parameters for add operation
+            stmt.setNull(8, java.sql.Types.INTEGER);
+        } else {
+            // Adjust parameters for update operation
+            stmt.setInt(8, product.getId());
+        }
     }
+
 
     private Size getSizeById(int sizeId) {
         SizeManagement sizeManagement = new SizeManagement();
@@ -45,9 +53,10 @@ public class ProductManagement extends Management<Product> {
     }
 
     private Category getCategoryById(int categoryId) {
-        CategoryManagemet categoryManagement = new CategoryManagemet();
+        CategoryManagement categoryManagement = new CategoryManagement();
         return categoryManagement.getCategoryById(categoryId);
     }
+
 
     public List<Product> getProductsByCategory(int categoryId) {
         List<Product> productList = new ArrayList<>();
@@ -75,11 +84,9 @@ public class ProductManagement extends Management<Product> {
     }
     
 
-    public int addProduct(Product product) {
+    public int addProduct(Product product, Size size) {
         String query = "INSERT INTO product (name, description, type, size_id, category_id, image_url, last_order, order_count) " +
                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-
         return add(product, query);
     }
 

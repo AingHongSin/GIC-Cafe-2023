@@ -43,6 +43,8 @@ public class Cashire_Controller {
                                 Model model
     ) {
 
+        System.out.println("SEX: " + sex);
+
         Date dob = new Date(dobUtil.getTime());
 
         var age = getAge(dob);

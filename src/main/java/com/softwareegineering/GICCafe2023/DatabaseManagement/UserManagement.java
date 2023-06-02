@@ -28,35 +28,26 @@ public class UserManagement extends Management<User> {
         return new User(userId, firstName, lastName, sex, role, dob, hireDate, age, username, password, imageUrl, served, lastLogin);
     }
 
-    // @Override
-    // protected void setStatementParams(boolean isAddOperation, PreparedStatement stmt, User model) throws SQLException {
-    //     stmt.setString(1, model.getFirstName());
-    //     stmt.setString(2, model.getLastName());
-    //     stmt.setString(3, model.getSex());
-    //     stmt.setString(4, model.getRole());
-    //     stmt.setDate(5, new java.sql.Date(model.getDob().getTime()));
-    //     stmt.setDate(6, model.getHireDate() != null ? new java.sql.Date(model.getHireDate().getTime()) : null);
-    //     stmt.setInt(7, model.getAge());
-    //     stmt.setString(8, model.getUsername());
-    //     stmt.setString(9, model.getPassword());
-    //     stmt.setString(10, model.getImage_url());
-    //     stmt.setInt(11, model.getServed());
-    //     stmt.setDate(12, model.getLastLogin() != null ? new java.sql.Date(model.getLastLogin().getTime()) : null);
+    @Override
+    protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, User model) throws SQLException {
+        stmt.setString(1, model.getFirstName());
+        stmt.setString(2, model.getLastName());
+        stmt.setString(3, model.getSex());
+        stmt.setString(4, model.getRole());
+        stmt.setDate(5, new java.sql.Date(model.getDob().getTime()));
+        stmt.setDate(6, model.getHireDate() != null ? new java.sql.Date(model.getHireDate().getTime()) : null);
+        stmt.setInt(7, model.getAge());
+        stmt.setString(8, model.getUsername());
+        stmt.setString(9, model.getPassword());
+        stmt.setString(10, model.getImage_url());
+        stmt.setInt(11, model.getServed());
+        stmt.setDate(12, model.getLastLogin() != null ? new java.sql.Date(model.getLastLogin().getTime()) : null);
     
-    //     if (isAddOperation) {
-    //         // Adjust parameters for add operation
-    //         stmt.setNull(13, java.sql.Types.INTEGER);
-    //     } else {
-    //         // Adjust parameters for update operation
-    //         stmt.setInt(13, model.getUserId());
-    //     }
-    // }
-    
-    
-    
-    
-    
-    
+        if (!isAddOperation) {
+            // Adjust parameters for update operation
+            stmt.setInt(13, model.getId());
+        }
+    }
     
     public List<User> getAllUsers() {
         String query = "SELECT * FROM user WHERE role <> 'Unavailable'";
@@ -108,9 +99,4 @@ public class UserManagement extends Management<User> {
         return user;
     }
 
-	@Override
-	protected void setStatementParams(PreparedStatement stmt, User model) throws SQLException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'setStatementParams'");
-	}
 }

@@ -16,7 +16,7 @@ public abstract class Management<T> {
     private static final String DB_PASSWORD = "";
 
     protected abstract T mapRowToModel(ResultSet rs) throws SQLException;
-    protected abstract void setStatementParams(PreparedStatement stmt, T model) throws SQLException;
+    protected abstract void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, T model) throws SQLException;
 
     protected Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);

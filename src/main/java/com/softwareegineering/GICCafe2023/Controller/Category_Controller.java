@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
-import com.softwareegineering.GICCafe2023.DatabaseManagement.CategoryManagemet;
+import com.softwareegineering.GICCafe2023.DatabaseManagement.CategoryManagement;
 import com.softwareegineering.GICCafe2023.DatabaseManagement.ProductManagement;
 import com.softwareegineering.GICCafe2023.Model.*;
 
@@ -45,7 +45,7 @@ public class Category_Controller {
                                 Model model) {
 
         
-        CategoryManagemet categoryManagemet = new CategoryManagemet();
+        CategoryManagement categoryManagemet = new CategoryManagement();
         Category category = new Category(categoryID, categoryName);
 
         if (categoryName != "") {
@@ -69,7 +69,7 @@ public class Category_Controller {
                                 @RequestParam("deleteCateId") int deleteCateId
                                 ) {
 
-        CategoryManagemet categoryManagemet = new CategoryManagemet();
+        CategoryManagement categoryManagemet = new CategoryManagement();
         categoryManagemet.deleteCategory(deleteCateId);
 
 
@@ -81,14 +81,14 @@ public class Category_Controller {
 
 
     private Category getACategory(int cateId) {
-        CategoryManagemet categoryManagemet = new CategoryManagemet();
+        CategoryManagement categoryManagemet = new CategoryManagement();
 
         return categoryManagemet.getCategoryById(cateId);
     }
 
     private List<Category> getCategories() {
 
-        CategoryManagemet categoryManagemet = new CategoryManagemet();
+        CategoryManagement categoryManagemet = new CategoryManagement();
         List<Category> categories = categoryManagemet.getAllCategories();
 
         return categories;

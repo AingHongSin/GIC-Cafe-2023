@@ -18,10 +18,18 @@ public class OrderManagement extends Management<Order> {
         return order;
     }
     @Override
-    protected void setStatementParams(PreparedStatement stmt, Order order) throws SQLException {
+    protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, Order order) throws SQLException {
         stmt.setInt(1, order.getUserId());
         stmt.setTimestamp(2, new java.sql.Timestamp(order.getDateCreated().getTime()));
         stmt.setString(3, order.getStatus());
+
+        if (isAddOperation) {
+            // Adjust parameters for add operation
+            stmt.setNull(4, java.sql.Types.INTEGER);
+        } else {
+            // Adjust parameters for update operation
+            stmt.setInt(4, order.getId());
+        }
     }
 
     public void addOrder(Order order) {

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class CategoryManagemet extends Management<Category> {
+public class CategoryManagement extends Management<Category> {
     @Override
     protected Category mapRowToModel(ResultSet rs) throws SQLException {
         // Map the ResultSet to a Category object
@@ -21,9 +21,16 @@ public class CategoryManagemet extends Management<Category> {
     }
 
     @Override
-    protected void setStatementParams(PreparedStatement stmt, Category category) throws SQLException {
+    protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, Category category) throws SQLException {
         stmt.setString(1, category.getCategoryName());
-        stmt.setInt(2, category.getId());
+
+        if (isAddOperation) {
+            // Adjust parameters for add operation
+            stmt.setNull(2, java.sql.Types.INTEGER);
+        } else {
+            // Adjust parameters for update operation
+            stmt.setInt(2, category.getId());
+        }
     }
 
     public int addCategory(Category category) {
