@@ -29,14 +29,19 @@ public class SizeManagement extends Management<Size> {
         }
     }
 
-    public void addSize(Size size) {
+    public int addSize(Size size) {
         String query = "INSERT INTO size (size_name, price) VALUES (?, ?)";
-        add(size, query);
+        return add(size, query);
     }
 
     public void updateSize(Size size) {
-        String query = "UPDATE size SET size_name = ?, price = ? WHERE size_id = ?";
+        String query = "UPDATE product_size SET size_id = ?, product_id = ? WHERE product_size_id = ?";
         update(size, query);
+    }
+
+    public void deleteSize(int id) {
+        String query = "DELETE * FROM size WHERE size_id = ?";
+        delete(id, query);
     }
 
     public List<Size> getAllSizes() {

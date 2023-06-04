@@ -20,9 +20,9 @@ public class Category_Controller {
     @GetMapping("/categorymanagement")
     public ModelAndView category_management(Model model){
 
-        Category defaultCate = new Category(0, "Category");
+        Category defaultCate = new Category(0, null, null);
 
-        model.addAttribute("categorySelected", defaultCate );
+        model.addAttribute("categorySelected", defaultCate);
         model.addAttribute("categories", getCategories());
         model.addAttribute("products", getAllProducts());
         return new ModelAndView("categorymanagement");
@@ -41,12 +41,13 @@ public class Category_Controller {
     public ModelAndView addNewCategory(
                                 @RequestParam("categoryId") int categoryID, 
                                 @RequestParam("categoryName") String categoryName, 
+                                @RequestParam("categoryType") String type, 
                                 @RequestParam("isCreate") Boolean isCreate,
                                 Model model) {
 
         
         CategoryManagement categoryManagemet = new CategoryManagement();
-        Category category = new Category(categoryID, categoryName);
+        Category category = new Category(categoryID, categoryName, type);
 
         if (categoryName != "") {
             if(isCreate) {
@@ -103,6 +104,10 @@ public class Category_Controller {
 
         ProductManagement  productManagement = new ProductManagement();
         List<Product> products = productManagement.getAllProducts();
+
+        for (Product product : products) {
+            System.out.println("PRODUCT->" + product.getCategory().getType());
+        }
         
         return products;
     }

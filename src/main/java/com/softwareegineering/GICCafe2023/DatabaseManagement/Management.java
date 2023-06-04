@@ -47,7 +47,7 @@ public abstract class Management<T> {
         }
             // Parameter specific to the add operation
         if (isAddOperation) {
-
+            
         }
     }
 
@@ -163,14 +163,35 @@ public abstract class Management<T> {
         return model;
     }
 
-    public List<T> query(String keyword, String query) {
+    public List<T> query(String keyword, String query, Object... params) {
         List<T> modelList = new ArrayList<>();
-
+    
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, "%" + keyword + "%");
-
+    
+            int parameterCount = params.length;
+    
+            for (int i = 0; i < parameterCount; i++) {
+                Object param = params[i];
+                int parameterIndex = i + 1;
+    
+                if (param instanceof String) {
+                    stmt.setString(parameterIndex, (String) param);
+                } else if (param instanceof Integer) {
+                    stmt.setInt(parameterIndex, (Integer) param);
+                } else if (param instanceof Double) {
+                    stmt.setDouble(parameterIndex, (Double) param);
+                } else if (param instanceof Float) {
+                    stmt.setFloat(parameterIndex, (Float) param);
+                } else if (param instanceof Boolean) {
+                    stmt.setBoolean(parameterIndex, (Boolean) param);
+                } else if (param instanceof Date) {
+                    stmt.setDate(parameterIndex, (Date) param);
+                } else {
+                    stmt.setObject(parameterIndex, param);
+                }
+            }
+    
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     T model = mapRowToModel(rs);
@@ -180,7 +201,7 @@ public abstract class Management<T> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+    
         return modelList;
     }
 }

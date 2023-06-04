@@ -6,72 +6,65 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.softwareegineering.GICCafe2023.Model.Order;
+import com.softwareegineering.GICCafe2023.Model.User;
+
 
 public class OrderManagement extends Management<Order> {
+
     @Override
     protected Order mapRowToModel(ResultSet rs) throws SQLException {
-        Order order = new Order();
-        order.setId(rs.getInt("order_id"));
-        order.setUserId(rs.getInt("user_id"));
-        order.setDateCreated(rs.getDate("date_created"));
-        order.setStatus(rs.getString("status"));
-        return order;
+        int id = rs.getInt("order_id");
+        int userId = rs.getInt("user_id");
+        User user = getUserById(userId);
+        java.sql.Date dateCreated = rs.getDate("date_created");
+        String status = rs.getString("status");
+
+        return new Order(id, user, dateCreated, status);
     }
+
     @Override
     protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, Order order) throws SQLException {
-        stmt.setInt(1, order.getUserId());
-        stmt.setTimestamp(2, new java.sql.Timestamp(order.getDateCreated().getTime()));
+        stmt.setInt(1, order.getUser().getId());
+        stmt.setDate(2, order.getDateCreated());
         stmt.setString(3, order.getStatus());
 
-        if (isAddOperation) {
-            // Adjust parameters for add operation
-            stmt.setNull(4, java.sql.Types.INTEGER);
-        } else {
-            // Adjust parameters for update operation
+        if (!isAddOperation) {
             stmt.setInt(4, order.getId());
         }
     }
 
-    public void addOrder(Order order) {
-        String query = "INSERT INTO `order` (user_id, date_created, status) VALUES (?, ?, ?)";
-        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
-            stmt.setInt(1, order.getUserId());
-            stmt.setDate(2, new java.sql.Date(order.getDateCreated().getTime()));
-            stmt.setString(3, order.getStatus());
-
-            int rowsInserted = stmt.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("Order added successfully");
-            } else {
-                System.out.println("Failed to add order");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public int addOrder(Order order) {
+        String query = "INSERT INTO order (user_id, date_created, status) VALUES (?, ?, ?)";
+        return add(order, query);
     }
 
     public void updateOrder(Order order) {
-        String query = "UPDATE `order` SET user_id = ?, date_created = ?, status = ? WHERE order_id = ?";
-        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
-            stmt.setInt(1, order.getUserId());
-            stmt.setDate(2, new java.sql.Date(order.getDateCreated().getTime()));
-            stmt.setString(3, order.getStatus());
-            stmt.setInt(4, order.getId());
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Order updated successfully");
-            } else {
-                System.out.println("Failed to update order");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        String query = "UPDATE order SET user_id=?, date_created=?, status=? WHERE id=?";
+        update(order, query);
     }
 
-    public List<Order> getOrdersByUserId(int userId) {
-        String query = "SELECT * FROM `order` WHERE user_id = ?";
-        return query(String.valueOf(userId), query);
+    public void deleteOrder(int id) {
+        String query = "DELETE FROM order WHERE id=?";
+        delete(id, query);
     }
-    
+
+    public List<Order> getAllOrders() {
+        String query = "SELECT * FROM order";
+        return getAll(query);
+    }
+
+    public Order getOrderById(int id) {
+        String query = "SELECT * FROM order WHERE id=?";
+        return getById(id, query);
+    }
+
+    public List<Order> searchOrders(String keyword) {
+        String query = "SELECT * FROM order WHERE status LIKE ?";
+        return query(keyword, query);
+    }
+
+    private User getUserById(int userId) {
+        UserManagement userManagement = new UserManagement();
+        return userManagement.getUserById(userId);
+    }
 }

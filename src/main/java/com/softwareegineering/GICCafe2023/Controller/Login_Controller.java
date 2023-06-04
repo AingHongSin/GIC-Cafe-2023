@@ -26,7 +26,7 @@ public class Login_Controller {
 
         UserManagement usermanagement = new UserManagement();
 
-        User user = usermanagement.loginUser(username, password);
+        User user = usermanagement.login(username, password);
         
 
         if (user != null) {

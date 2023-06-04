@@ -3,10 +3,7 @@ package com.softwareegineering.GICCafe2023.Model;
 public class Size extends Model {
     private String sizeName;
     private double price;
-
-
-
-
+	
 	public Size() {
 	}
 

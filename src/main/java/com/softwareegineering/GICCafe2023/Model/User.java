@@ -12,7 +12,7 @@ public class User extends Model {
     private int age;
     private String username;
     private String password;
-    private String image_url;
+    private String imageUrl;
     private int served;
     private Date lastLogin;
 
@@ -29,7 +29,7 @@ public class User extends Model {
         this.age = age;
         this.username = username;
         this.password = password;
-        this.image_url = image_url;
+        this.imageUrl = image_url;
     }
 
 
@@ -46,7 +46,7 @@ public class User extends Model {
         this.age = age;
         this.username = username;
         this.password = password;
-        this.image_url = image_url;
+        this.imageUrl = image_url;
     }
 
 
@@ -63,7 +63,7 @@ public class User extends Model {
         this.age = age;
         this.username = username;
         this.password = password;
-        this.image_url = image_url;
+        this.imageUrl = image_url;
         this.served = served;
         this.lastLogin = lastLogin;
     }
@@ -116,12 +116,12 @@ public class User extends Model {
     public void setPassword(String password) { this.password = password; }
 
 
-    public String getImage_url() {
-        return image_url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImageUrl(String image_url) {
+        this.imageUrl = image_url;
     }
     public int getServed() {
         return served;

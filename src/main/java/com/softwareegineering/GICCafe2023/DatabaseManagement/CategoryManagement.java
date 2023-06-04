@@ -16,6 +16,7 @@ public class CategoryManagement extends Management<Category> {
         Category category = new Category();
         category.setId(rs.getInt("category_id"));
         category.setCategoryName(rs.getString("category_name"));
+        category.setType(rs.getString("type"));
         // Set other category properties based on the columns in the ResultSet
         return category;
     }
@@ -23,23 +24,21 @@ public class CategoryManagement extends Management<Category> {
     @Override
     protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, Category category) throws SQLException {
         stmt.setString(1, category.getCategoryName());
+        stmt.setString(2, category.getType());
 
-        if (isAddOperation) {
-            // Adjust parameters for add operation
-            stmt.setNull(2, java.sql.Types.INTEGER);
-        } else {
-            // Adjust parameters for update operation
-            stmt.setInt(2, category.getId());
+        if (!isAddOperation) {
+            stmt.setInt(3, category.getId());
         }
     }
 
     public int addCategory(Category category) {
-        String query = "INSERT INTO category (category_name) VALUES (?)";
+        String query = "INSERT INTO category (category_name, type) VALUES (?,?)";
 
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, category.getCategoryName());
+            stmt.setString(2, category.getType());
 
             int rowsAffected = stmt.executeUpdate();
 
@@ -61,7 +60,7 @@ public class CategoryManagement extends Management<Category> {
     }
 
     public void updateCategory(Category category) {
-        String query = "UPDATE category SET category_name = ? WHERE category_id = ?";
+        String query = "UPDATE category SET category_name = ?, type = ? WHERE category_id = ?";
         update(category, query);
     }
 
@@ -76,7 +75,7 @@ public class CategoryManagement extends Management<Category> {
     }
 
     public List<Category> queryCategories(String keyword) {
-        String query = "SELECT * FROM category WHERE category_name LIKE ?";
+        String query = "SELECT * FROM category WHERE category_name LIKE ? type = ?";
         return query(keyword, query);
     }
 
@@ -86,3 +85,5 @@ public class CategoryManagement extends Management<Category> {
         delete(categoryId, query);
     }
 }
+
+

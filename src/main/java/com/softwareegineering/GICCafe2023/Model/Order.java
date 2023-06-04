@@ -3,25 +3,27 @@ package com.softwareegineering.GICCafe2023.Model;
 import java.sql.Date;
 
 public class Order extends Model {
-    private int userId;
+    private User user;
     private Date dateCreated;
     private String status;
 
-    
-    public Order() { }
 
-    public Order(int id, int userId, Date dateCreated, String status) {
+    
+    public Order() {
+    }
+
+    public Order(int id, User user, Date dateCreated, String status) {
         super(id);
-        this.userId = userId;
+        this.user = user;
         this.dateCreated = dateCreated;
         this.status = status;
     }
     
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
     public Date getDateCreated() {
         return dateCreated;
@@ -35,7 +37,7 @@ public class Order extends Model {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-
 
 }
+
+

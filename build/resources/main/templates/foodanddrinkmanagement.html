@@ -6,6 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Food and Drink Management - Admin</title>
         <link rel="stylesheet" href="/static/css/cashier-admin/cashier.css" />
+        <link rel="stylesheet" href="/static/css/Food-and-Drink/Food-and-Drink-style.css" />
+        <link rel="stylesheet" href="/static/css/popup/newProduct-Style.css" />
+        <link rel="stylesheet" href="/static/css/logout-popup/styles.css" />
+
+        
+
+
     </head>
     <body>
 
@@ -15,7 +22,7 @@
             <header>
                 <div class="title"><h2>Food and Drink</h2></div>
                 
-                <div class="btn-container">
+                <div class="btn-container" onclick="openCashierPopup(true, null)">
                     <button>
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M31.9997 16.9999C31.9997 17.2651 31.8943 17.5194 31.7068 17.707C31.5192 17.8945 31.2649 17.9999 30.9997 17.9999H28.9997V19.9999C28.9997 20.2651 28.8943 20.5194 28.7068 20.707C28.5192 20.8945 28.2649 20.9999 27.9997 20.9999C27.7345 20.9999 27.4801 20.8945 27.2926 20.707C27.105 20.5194 26.9997 20.2651 26.9997 19.9999V17.9999H24.9997C24.7345 17.9999 24.4801 17.8945 24.2926 17.707C24.105 17.5194 23.9997 17.2651 23.9997 16.9999C23.9997 16.7347 24.105 16.4803 24.2926 16.2928C24.4801 16.1052 24.7345 15.9999 24.9997 15.9999H26.9997V13.9999C26.9997 13.7347 27.105 13.4803 27.2926 13.2928C27.4801 13.1052 27.7345 12.9999 27.9997 12.9999C28.2649 12.9999 28.5192 13.1052 28.7068 13.2928C28.8943 13.4803 28.9997 13.7347 28.9997 13.9999V15.9999H30.9997C31.2649 15.9999 31.5192 16.1052 31.7068 16.2928C31.8943 16.4803 31.9997 16.7347 31.9997 16.9999ZM24.7659 24.3561C24.9367 24.5593 25.0197 24.8221 24.9967 25.0865C24.9737 25.3509 24.8466 25.5954 24.6434 25.7661C24.4402 25.9369 24.1775 26.0199 23.9131 25.9969C23.6486 25.9739 23.4042 25.8468 23.2334 25.6436C20.7184 22.6486 17.2609 20.9999 13.4997 20.9999C9.73843 20.9999 6.28093 22.6486 3.76593 25.6436C3.59519 25.8467 3.35079 25.9736 3.08648 25.9965C2.82217 26.0193 2.55961 25.9362 2.35655 25.7655C2.15349 25.5948 2.02658 25.3504 2.00372 25.0861C1.98087 24.8217 2.06394 24.5592 2.23468 24.3561C4.10218 22.1336 6.42468 20.5549 9.00593 19.7099C7.43831 18.7335 6.23133 17.2731 5.56759 15.5497C4.90386 13.8263 4.81949 11.9336 5.32724 10.1579C5.83499 8.3823 6.90724 6.82033 8.38176 5.70834C9.85629 4.59636 11.6529 3.99487 13.4997 3.99487C15.3465 3.99487 17.1431 4.59636 18.6176 5.70834C20.0921 6.82033 21.1644 8.3823 21.6721 10.1579C22.1799 11.9336 22.0955 13.8263 21.4318 15.5497C20.768 17.2731 19.561 18.7335 17.9934 19.7099C20.5747 20.5549 22.8972 22.1336 24.7659 24.3561ZM13.4997 18.9999C14.7853 18.9999 16.042 18.6187 17.1109 17.9044C18.1798 17.1902 19.0129 16.175 19.5049 14.9873C19.9969 13.7996 20.1256 12.4927 19.8748 11.2318C19.624 9.97091 19.0049 8.81272 18.0959 7.90368C17.1868 6.99464 16.0286 6.37557 14.7678 6.12477C13.5069 5.87396 12.2 6.00269 11.0122 6.49465C9.82451 6.98662 8.80935 7.81975 8.09512 8.88867C7.38089 9.95759 6.99968 11.2143 6.99968 12.4999C7.00166 14.2232 7.68712 15.8753 8.90567 17.0939C10.1242 18.3124 11.7764 18.9979 13.4997 18.9999Z" fill="white"/>
@@ -24,20 +31,6 @@
                     </button>
                 </div>
 
-                <!-- <div class="btn-search">
-                    <div class="search">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
-                        >
-                            <path
-                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                            />
-                        </svg>
-                        <input type="text" placeholder="search for pepole" />
-                    </div>
-                </div> -->
-                
             </header>
             <div class="list-data">
                 <div class="schema">
@@ -49,29 +42,175 @@
                 </div>
                 <div class="pepole">
                     
-                    <div class="people1" th:each="product: ${products}">
-                        <div class="id" th:text="${product.getId()}">c00001</div>
-                        <div class="name" th:text="${product.getName()}">Jame Bone</div>
-                        <div class="sex" th:text="'$' + ${product.getSize().getPrice()}">M</div>
-                        <div class="db" th:text="${product.getCategory().getCategoryName}">02/02/1999</div>
+                    <div class="people1" th:each="productSize: ${productSizes}">
+                        <div class="id" th:text="${productSize.getProduct().getId()}">c00001</div>
+                        <div class="name" th:text="${productSize.getProduct().getName()}">Jame Bone</div>
+                        <div class="sex" th:text="'$' + ${productSize.getSize().getPrice()}">M</div>
+                        <div class="db" th:text="${productSize.getProduct().getCategory().getCategoryName()}">02/02/1999</div>
                         <div class="action">
-                            <button>
+                            <button onclick="openCashierPopup(false, this)" th:attr="data-productSize-id = ${productSize.getId()}, data-product-id = ${productSize.getProduct().getId()}, data-product-type = ${productSize.getProduct().getCategory().getType()}, data-product-name = ${productSize.getProduct().getName()}, data-product-cate = ${productSize.getProduct().getCategory().getId()}, data-product-size = ${productSize.getSize().getSizeName()}, data-product-sizeDI = ${productSize.getSize().getId()}, data-product-price = ${productSize.getSize().getPrice()}, data-product-note = ${productSize.getProduct().getDescription()}, data-product-img = ${productSize.getProduct().getImageUrl()}">
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M28.5934 9.17122L23.0084 3.58497C22.8227 3.39921 22.6022 3.25185 22.3595 3.15131C22.1169 3.05077 21.8568 2.99902 21.5941 2.99902C21.3314 2.99902 21.0713 3.05077 20.8286 3.15131C20.5859 3.25185 20.3654 3.39921 20.1797 3.58497L4.76595 19C4.57942 19.185 4.43154 19.4053 4.3309 19.648C4.23025 19.8907 4.17886 20.151 4.1797 20.4137V26C4.1797 26.5304 4.39041 27.0391 4.76548 27.4142C5.14056 27.7893 5.64926 28 6.1797 28H11.7659C12.0287 28.0008 12.289 27.9494 12.5317 27.8488C12.7744 27.7481 12.9947 27.6002 13.1797 27.4137L28.5934 12C28.7792 11.8142 28.9266 11.5937 29.0271 11.3511C29.1276 11.1084 29.1794 10.8483 29.1794 10.5856C29.1794 10.3229 29.1276 10.0628 29.0271 9.82012C28.9266 9.57744 28.7792 9.35695 28.5934 9.17122ZM11.7659 26H6.1797V20.4137L17.1797 9.41372L22.7659 15L11.7659 26ZM24.1797 13.585L18.5934 7.99997L21.5934 4.99997L27.1797 10.585L24.1797 13.585Z" fill="#343330"/>
                                 </svg>
                             </button>
 
-                            <button>
+                            <button onclick="openDeleteCatePopup(this)" th:attr="data-productSize-id = ${productSize.getId()}, data-product-name = ${productSize.getProduct().getName()}" a>
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M27.1797 6H5.17969C4.91447 6 4.66012 6.10536 4.47258 6.29289C4.28504 6.48043 4.17969 6.73478 4.17969 7C4.17969 7.26522 4.28504 7.51957 4.47258 7.70711C4.66012 7.89464 4.91447 8 5.17969 8H6.17969V26C6.17969 26.5304 6.3904 27.0391 6.76547 27.4142C7.14055 27.7893 7.64925 28 8.17969 28H24.1797C24.7101 28 25.2188 27.7893 25.5939 27.4142C25.969 27.0391 26.1797 26.5304 26.1797 26V8H27.1797C27.4449 8 27.6993 7.89464 27.8868 7.70711C28.0743 7.51957 28.1797 7.26522 28.1797 7C28.1797 6.73478 28.0743 6.48043 27.8868 6.29289C27.6993 6.10536 27.4449 6 27.1797 6ZM24.1797 26H8.17969V8H24.1797V26ZM10.1797 3C10.1797 2.73478 10.285 2.48043 10.4726 2.29289C10.6601 2.10536 10.9145 2 11.1797 2H21.1797C21.4449 2 21.6993 2.10536 21.8868 2.29289C22.0743 2.48043 22.1797 2.73478 22.1797 3C22.1797 3.26522 22.0743 3.51957 21.8868 3.70711C21.6993 3.89464 21.4449 4 21.1797 4H11.1797C10.9145 4 10.6601 3.89464 10.4726 3.70711C10.285 3.51957 10.1797 3.26522 10.1797 3Z" fill="#C7283C"/>
                                 </svg> 
                             </button>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
+
+        <div id="popupBackground">
+            <div id="newCashier">
+                <h2 id="titlePopUpView">New Product</h2>
+                <form action"/foodanddrinkmanagement" method="post" style="display:flex; flex-direction: column;">
+                    <input type="hidden" id="productID" name="productID" value="0">
+                    <input type="hidden" id="productSizeID" name="productSizeID" value="0">
+
+                    <div id="heroForm" style="flex-direction: row;">
+                        <div id="fillForm" style="display:flex; flex-direction:column; gap: 1rem; padding:1rem;">
+                            <div class="fillInput">
+                                <label for="pType">Product Type:</label>
+                                <select id="pType" name="productType" style="padding:2px;" required>
+                                    <option value="Drink">Drink</option>
+                                    <option value="Food">Food</option>
+                                </select>
+                            </div>
+                            <div class="fillInput">
+                                <label for="name">Name:</label>
+                                <input type="text" id="pro_name" name="productName" required>
+                            </div>
+                            <div class="fillInput">
+                                <label for="category">Category:</label>
+                                <select id="categorySelectID" name="productCategory" style="padding:2px;"  required>
+                                    <group th:each="category: ${categories}">
+                                        <option th:value="${category.getId()}" th:text="${category.getCategoryName()}">Drink</option>
+                                    </group>
+                                </select>
+
+                            </div>
+                            <div class="fillInput">
+                                <label for="size">Size:</label>
+                                <select id="size" name="productSize" style="padding:2px;" required>
+                                    <option value="Small">Small</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Large">Large</option>
+                                </select>
+                            </div>
+                            <div class="fillInput">
+                                <label for="price">Price:</label>
+                                <input type="text" id="price" name="productPrice" required>
+                            </div>
+                            <div class="fillInput">
+                                <label for="note">Note:</label>
+                                <textarea type="text" id="note" name="productDescription" ></textarea>
+                            </div>
+        
+                        </div>
+            
+            
+                        <div id="imgUpload" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1rem;">
+                            <div class="image-preview">
+                                <img id="previewImg" src="/static/svg/imageicon.svg" alt="Image Preview">
+                            </div>
+                            
+                            <label class="file-upload">
+                                <input type="file" id="photo" name="productImage" onchange="showPreview(event)">
+                                Choose Photo
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="align-self: self-end; margin-right: 2rem;">
+                        <input type="reset" value="Cancel" onclick="closeCashierPopup()" style="color:red; border-color: red; background-color: white; border-radius: 5px; padding:8px">
+                        <input type="submit" value="Add Product" style="color:white; border-color: rgb(0, 208, 255); background-color: rgb(0, 208, 255); border-radius: 5px; padding:8px">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+
+        <div id="deleteCatePopup">
+            <div class="logout-container" >
+                <h2>Delete</h2>
+                <h3 id="delMessage">Do you want to Logout?</h3>
+                <form method="get" action="/foodanddrinkmanagement/DeleteProduct">
+                    <input type="hidden" name="deleteProdID" id="deleteProdID">
+    
+                    <button class="cancel" onclick="closeDeleteCatePopup()" type="reset">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.5833 19.0618C19.6529 19.1314 19.7082 19.2141 19.7459 19.3051C19.7835 19.3961 19.8029 19.4936 19.8029 19.5921C19.8029 19.6905 19.7835 19.7881 19.7459 19.8791C19.7082 19.97 19.6529 20.0527 19.5833 20.1224C19.5137 20.192 19.431 20.2472 19.34 20.2849C19.249 20.3226 19.1515 20.342 19.053 20.342C18.9545 20.342 18.857 20.3226 18.766 20.2849C18.675 20.2472 18.5923 20.192 18.5227 20.1224L12.3072 13.9059L6.09176 20.1224C5.95112 20.263 5.76037 20.342 5.56147 20.342C5.36257 20.342 5.17182 20.263 5.03118 20.1224C4.89054 19.9817 4.81152 19.791 4.81152 19.5921C4.81152 19.3932 4.89054 19.2024 5.03118 19.0618L11.2476 12.8463L5.03118 6.63082C4.89054 6.49018 4.81152 6.29943 4.81152 6.10053C4.81152 5.90163 4.89054 5.71088 5.03118 5.57024C5.17182 5.4296 5.36257 5.35059 5.56147 5.35059C5.76037 5.35059 5.95112 5.4296 6.09176 5.57024L12.3072 11.7866L18.5227 5.57024C18.6633 5.4296 18.8541 5.35059 19.053 5.35059C19.2519 5.35059 19.4426 5.4296 19.5833 5.57024C19.7239 5.71088 19.8029 5.90163 19.8029 6.10053C19.8029 6.29943 19.7239 6.49018 19.5833 6.63082L13.3669 12.8463L19.5833 19.0618Z" fill="#C7283C"/>
+                        </svg>
+                        Cancel
+                    </button>
+    
+                    <button class="add" id="confirmAddCategoryButton" type="submit">
+                        <svg width="25" height="25" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28.7076 9.70751L12.7076 25.7075C12.6147 25.8005 12.5044 25.8742 12.383 25.9246C12.2616 25.9749 12.1315 26.0008 12.0001 26.0008C11.8687 26.0008 11.7385 25.9749 11.6171 25.9246C11.4957 25.8742 11.3854 25.8005 11.2926 25.7075L4.29257 18.7075C4.10493 18.5199 3.99951 18.2654 3.99951 18C3.99951 17.7346 4.10493 17.4801 4.29257 17.2925C4.48021 17.1049 4.7347 16.9994 5.00007 16.9994C5.26543 16.9994 5.51993 17.1049 5.70757 17.2925L12.0001 23.5863L27.2926 8.29251C27.4802 8.10487 27.7347 7.99945 28.0001 7.99945C28.2654 7.99945 28.5199 8.10487 28.7076 8.29251C28.8952 8.48015 29.0006 8.73464 29.0006 9.00001C29.0006 9.26537 28.8952 9.51987 28.7076 9.70751Z" fill="white"/>
+                        </svg>
+                        Done
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+        <script>
+
+            function showPreview(event) {
+                var input = event.target;
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var img = document.getElementById("previewImg");
+                    img.src = reader.result;
+                    img.style.display = "block";
+                };
+                reader.readAsDataURL(input.files[0]);
+                console.log("url: ", input.files[0])
+            }
+            
+            function openCashierPopup(isCreateMode, data) {
+                document.getElementById("popupBackground").style.display = 'block';
+    
+                 if (!isCreateMode) { // UPDATE MODE
+                     document.getElementById("titlePopUpView").innerHTML = "Update"
+                     
+
+                    console.log("Cate: ", data.getAttribute("data-product-cate"))
+                    document.getElementById("productID").value = data.getAttribute("data-product-id");
+                    document.getElementById("productSizeID").value = data.getAttribute("data-productSize-id");
+
+                    document.getElementById("pType").value = data.getAttribute("data-product-type");
+                    document.getElementById("pro_name").value = data.getAttribute("data-product-name");
+                    document.getElementById("categorySelectID").value = data.getAttribute("data-product-cate");
+                    document.getElementById("size").value = data.getAttribute("data-product-sizeId")
+                    document.getElementById("size").text = data.getAttribute("data-product-size")
+                    document.getElementById("price").value = data.getAttribute("data-product-price");
+                    document.getElementById("note").value = data.getAttribute("data-product-note");
+
+                    document.getElementById("previewImg").src = data.getAttribute("data-product-img");
+                 }
+            }
+            
+            function closeCashierPopup() {
+                document.getElementById("popupBackground").style.display = 'none';
+            }
+
+            function openDeleteCatePopup(user) {
+                document.getElementById("deleteCatePopup").style.display = 'block';
+
+                document.getElementById("delMessage").innerHTML = `Do you want to delete ${user.getAttribute("data-product-name")}?`
+                document.getElementById("deleteProdID").value = user.getAttribute("data-productSize-id");
+            }
+            
+            function closeDeleteCatePopup() {
+                document.getElementById("deleteCatePopup").style.display = 'none';
+            }
+        </script>
     </body>
 </html>

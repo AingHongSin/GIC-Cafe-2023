@@ -1,0 +1,57 @@
+#popupBackground {
+    position: fixed;
+  
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3.5px);
+  
+    display: none;
+  }
+  
+  #popupBackground #newCashier {
+    position: fixed;
+  
+  
+    left: calc(50% - 800px/2);
+    top: calc(50% - 520px/2);
+  
+  }
+
+  
+
+#deleteCatePopup {
+    position: fixed;
+    margin: auto;
+  
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3.5px);
+  
+    display: none;
+  }
+  
+  
+  
+  #deleteCatePopup .logout-container {
+    position: fixed;
+  
+    left: calc(50% - 435px/2);
+    top: calc(50% - 269px/2);
+  }
+
+/* data-product-type = ${product.getType()}
+data-product-name = ${product.getName()}
+data-product-cate = ${product.getCategory()}
+data-product-size = ${product.getSize().getName()}
+data-product-price = ${product.get().getSize().getPrice()}
+data-product-note = ${product.getDescription()}
+data-product-img = ${product.getImage_url()} */
+  

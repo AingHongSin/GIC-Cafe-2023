@@ -8,10 +8,12 @@ import java.sql.SQLException;
 import java.sql.Date;
 import java.util.List;
 
+
 public class UserManagement extends Management<User> {
+
     @Override
     protected User mapRowToModel(ResultSet rs) throws SQLException {
-        int userId = rs.getInt("user_id");
+        int id = rs.getInt("user_id");
         String firstName = rs.getString("first_name");
         String lastName = rs.getString("last_name");
         String sex = rs.getString("sex");
@@ -25,7 +27,7 @@ public class UserManagement extends Management<User> {
         int served = rs.getInt("served");
         Date lastLogin = rs.getDate("last_login");
 
-        return new User(userId, firstName, lastName, sex, role, dob, hireDate, age, username, password, imageUrl, served, lastLogin);
+        return new User(id, firstName, lastName, sex, role, dob, hireDate, age, username, password, imageUrl, served, lastLogin);
     }
 
     @Override
@@ -34,69 +36,65 @@ public class UserManagement extends Management<User> {
         stmt.setString(2, model.getLastName());
         stmt.setString(3, model.getSex());
         stmt.setString(4, model.getRole());
-        stmt.setDate(5, new java.sql.Date(model.getDob().getTime()));
-        stmt.setDate(6, model.getHireDate() != null ? new java.sql.Date(model.getHireDate().getTime()) : null);
+        stmt.setDate(5, model.getDob());
+        stmt.setDate(6, model.getHireDate());
         stmt.setInt(7, model.getAge());
         stmt.setString(8, model.getUsername());
         stmt.setString(9, model.getPassword());
-        stmt.setString(10, model.getImage_url());
+        stmt.setString(10, model.getImageUrl());
         stmt.setInt(11, model.getServed());
-        stmt.setDate(12, model.getLastLogin() != null ? new java.sql.Date(model.getLastLogin().getTime()) : null);
-    
+        stmt.setDate(12, model.getLastLogin());
+
+        // Additional parameters for add operation
         if (!isAddOperation) {
-            // Adjust parameters for update operation
             stmt.setInt(13, model.getId());
         }
     }
-    
+
     public List<User> getAllUsers() {
-        String query = "SELECT * FROM user WHERE role <> 'Unavailable'";
+        String query = "SELECT * FROM user";
         return getAll(query);
     }
-    
 
     public int addUser(User user) {
-        String query = "INSERT INTO user (first_name, last_name, sex, role, dob, hire_date, age, username, password, image_url, served, last_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO user (first_name, last_name, sex, role, dob, hire_date, age, username, password, image_url, served, last_login) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return add(user, query);
     }
+
     public void updateUser(User user) {
-        String query = "UPDATE user SET first_name = ?, last_name = ?, sex = ?, role = ?, dob = ?, hire_date = ?, age = ?, " +
-                "username = ?, password = ?, image_url = ?, served = ?, last_login = ? WHERE user_id = ?";
+        String query = "UPDATE user SET first_name=?, last_name=?, sex=?, role=?, dob=?, hire_date=?, age=?, username=?, password=?, " +
+                "image_url=?, served=?, last_login=? WHERE id=?";
         update(user, query);
     }
 
-    public void disableUser(int userId) {
-        String query = "UPDATE user SET role = 'Unavailable' WHERE user_id = ?";
-        disable(userId, query);
+    public void deleteUser(int id) {
+        String query = "DELETE FROM user WHERE id=?";
+        delete(id, query);
     }
-    
-    public User getUserByID(int id) {
-        String query = "SELECT * FROM user WHERE user_id = ?";
+
+    public void disableUser(int id) {
+        String query = "UPDATE user SET role='Unavailable' WHERE id=?";
+        disable(id, query);
+    }
+
+    public User login(String username, String password) {
+        String query = "SELECT * FROM user WHERE username=? AND password=?";
+        List<User> users = query("keyword", query, username, password);
+
+        if (!users.isEmpty()) {
+            return users.get(0);
+        }
+        return null;
+    }
+
+    public User getUserById(int id) {
+        String query = "SELECT * FROM user WHERE id=?";
         return getById(id, query);
     }
 
-    public List<User> searchUser(String keyword) {
-        String query = "SELECT * FROM user WHERE username LIKE ?";
-        return query(keyword, query);
+    public List<User> queryUsers(String keyword) {
+        String query = "SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?";
+        return query(keyword, keyword, query);
     }
-
-    public User loginUser(String username, String password) {
-        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
-        User user = null;
-        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    user = mapRowToModel(rs);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return user;
-    }
-
 }

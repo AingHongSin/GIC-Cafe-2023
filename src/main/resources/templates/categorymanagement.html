@@ -12,7 +12,7 @@
 
     
     <script>
-        function openCatePopup(isCreate) {
+        function openCatePopup(isCreate, data) {
             document.getElementById("newPopUpView").style.display = 'block';
 
             const cate = document.getElementById("eachCateNameForProduct")
@@ -23,7 +23,11 @@
                 title.innerHTML = "New Category";
             } else {
                 document.getElementById("isCreateStatus").value = "false"
-                title.innerHTML = cate.innerHTML;
+                title.innerHTML = "Update";
+
+                console.log(data.getAttribute("data_cate_type"))
+                document.getElementById("categoryType").value = data.getAttribute("data_cate_type")
+                document.getElementById("categoryName").value = cate.innerHTML
             }
 
         }
@@ -62,7 +66,7 @@
                     </div>
                 
                 <div class="sidebar-button logout-button">
-                    <a onclick="openCatePopup(true)">
+                    <a onclick="openCatePopup(true, null)">
                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M22.5576 13C22.5576 13.2072 22.4753 13.4059 22.3288 13.5524C22.1823 13.6989 21.9836 13.7812 21.7764 13.7812H13.9639V21.5938C13.9639 21.801 13.8816 21.9997 13.735 22.1462C13.5885 22.2927 13.3898 22.375 13.1826 22.375C12.9754 22.375 12.7767 22.2927 12.6302 22.1462C12.4837 21.9997 12.4014 21.801 12.4014 21.5938V13.7812H4.58887C4.38167 13.7812 4.18295 13.6989 4.03644 13.5524C3.88993 13.4059 3.80762 13.2072 3.80762 13C3.80762 12.7928 3.88993 12.5941 4.03644 12.4476C4.18295 12.3011 4.38167 12.2188 4.58887 12.2188H12.4014V4.40625C12.4014 4.19905 12.4837 4.00034 12.6302 3.85382C12.7767 3.70731 12.9754 3.625 13.1826 3.625C13.3898 3.625 13.5885 3.70731 13.735 3.85382C13.8816 4.00034 13.9639 4.19905 13.9639 4.40625V12.2188H21.7764C21.9836 12.2188 22.1823 12.3011 22.3288 12.4476C22.4753 12.5941 22.5576 12.7928 22.5576 13Z" fill="white"/>
                         </svg>
@@ -77,7 +81,7 @@
                     <div class="title"><h2 th:text="${categorySelected.getCategoryName()}" id="eachCateNameForProduct">Category</h2></div>
                     <div class="header-Rightside">
                         <div class="action">
-                            <button onclick="openCatePopup(false)">
+                            <button onclick="openCatePopup(false, this)", th:attr="data_cate_type=${categorySelected.getType()}">
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M28.5934 9.17122L23.0084 3.58497C22.8227 3.39921 22.6022 3.25185 22.3595 3.15131C22.1169 3.05077 21.8568 2.99902 21.5941 2.99902C21.3314 2.99902 21.0713 3.05077 20.8286 3.15131C20.5859 3.25185 20.3654 3.39921 20.1797 3.58497L4.76595 19C4.57942 19.185 4.43154 19.4053 4.3309 19.648C4.23025 19.8907 4.17886 20.151 4.1797 20.4137V26C4.1797 26.5304 4.39041 27.0391 4.76548 27.4142C5.14056 27.7893 5.64926 28 6.1797 28H11.7659C12.0287 28.0008 12.289 27.9494 12.5317 27.8488C12.7744 27.7481 12.9947 27.6002 13.1797 27.4137L28.5934 12C28.7792 11.8142 28.9266 11.5937 29.0271 11.3511C29.1276 11.1084 29.1794 10.8483 29.1794 10.5856C29.1794 10.3229 29.1276 10.0628 29.0271 9.82012C28.9266 9.57744 28.7792 9.35695 28.5934 9.17122ZM11.7659 26H6.1797V20.4137L17.1797 9.41372L22.7659 15L11.7659 26ZM24.1797 13.585L18.5934 7.99997L21.5934 4.99997L27.1797 10.585L24.1797 13.585Z" fill="#343330"/>
                                 </svg>
@@ -89,19 +93,6 @@
                                 </svg> 
                             </button>
                         </div>
-                        <!-- <div class="btn">
-                            <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" >
-                                    <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/>
-                                </svg>
-                            </button>
-                        </div> 
-                        <div class="search">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-                            </svg>
-                            <input type="text" placeholder="search for pepole">
-                        </div>-->
                     </div>
                 </header>
                 <div class="list-data">
@@ -117,8 +108,8 @@
                         <div class="people1" th:each="product: ${products}">
                             <div class="id" th:text="${product.getId()}">c00001</div>
                             <div class="name" th:text="${product.getName()}">Jame Bone</div>
-                            <div class="sex" th:text="${product.getType()}">M</div>
-                            <div class="db" th:text="${product.getCategory().getCategoryName}">02/02/1999</div>
+                            <div class="sex" th:text="${product.getCategory().getType()}">M</div>
+                            <div class="db" th:text="${product.getCategory().getCategoryName()}">02/02/1999</div>
                             <div class="action">
                                 <button>
                                     <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,15 +136,25 @@
     <div id="newPopUpView">
         <table>
             <form method="post" action="/categorymanagement">
-                <input type="userID" name="isCreate" value="true" id="isCreateStatus">
-                <input type="hidden" name="categoryId" th:value="${categorySelected.getId()}">
+                <input type="hidden" name="isCreate" value="true" id="isCreateStatus">
+                <input type="hidden" name="categoryId" id="categoryId" th:value="${categorySelected.getId()}">
                 
                 <tr>
                     <td class="top" colspan="2"><h2 id="titleNewCaetgoryPopUp">New Category</h2></td>
                 </tr>
                 <tr>
                     <td>Category Name</td>
-                    <td class="right"><input type="text" name="categoryName"></td>
+                    <td class="right"><input type="text" name="categoryName" id="categoryName"></td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td class="right">
+                        <select name="categoryType" id="categoryType" style=" padding:1.5px;" required>
+                            <option value="Food">Food</option>
+                            <option value="Drink">Drink</option>
+                        </select>
+                    </td>
+                    
                 </tr>
                 <tr>
                     <td></td>

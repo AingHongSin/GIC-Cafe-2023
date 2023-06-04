@@ -7,6 +7,10 @@
  
     
 } */
+
+* {
+    font-size: 23px;
+}
 table, tr, td{
     /* border: 1px solid black; */
     border-collapse: collapse;
@@ -24,7 +28,6 @@ table{
     width: 40%;
     padding: 50px;
 
-    font-size: 23px;
     font-family: 600;
 }
 .top{
@@ -78,4 +81,16 @@ table button {
 
 svg{
     fill: white;
+}
+
+select {
+    width: calc(100% - 160px);
+    height: 40px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background: rgba(228, 228, 228, 0.5);
+    border: 1px solid rgba(228, 228, 228, 0.75);
+    border-radius: 8px;   
 }
