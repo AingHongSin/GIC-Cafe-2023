@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>History Order - Admin</title>
+        <link rel="stylesheet" href="/static/css/cashier-admin/cashier.css" />
+
+    </head>
+    <body>
+
+        <div th:replace="fragment/sidebar :: sidebar" id="ADMIN-SIDEBAR"></div>
+
+        <div class="container">
+            <header>
+                <div class="title"><h2>Order Hidtory</h2></div>
+                
+            </header>
+            <div class="list-data">
+                <div class="schema">
+                    <div class="id"><h3>Order number</h3></div>
+                    <div class="name"><h3>Date</h3></div>
+                    <div class="sex"><h3>Price</h3></div>
+                    <div class="db"><h3>Counter</h3></div>
+                    <div class="action"><h3>Table</h3></div>
+                </div>
+                <div class="pepole">
+                    <div class="people1" th:each="orderItem: ${orderItems}">
+                        <div class="id" th:text="${orderItem.getId()}">c00001</div>
+                        <div class="name" th:text="${orderItem.getOrder().getDateCreated()}">Jame Bone</div>
+                        <div class="sex" th:text="'$ ' + ${orderItem.getOrder().getTotalPrice()}">M</div>
+                        <div class="db" th:text="${orderItem.getOrder().getUser().getFirstName() + ' ' + orderItem.getOrder().getUser().getLastName()}">02/02/1999</div>
+                        <div class="action" th:text="${orderItem.getOrder().getTable().getTableNumber()}">Cashier</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

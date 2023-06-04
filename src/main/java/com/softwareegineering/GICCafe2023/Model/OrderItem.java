@@ -2,17 +2,19 @@ package com.softwareegineering.GICCafe2023.Model;
 
 public class OrderItem extends Model {
     private Order order;
-    private Product product;
+    private ProductSize productSize;
     private int quantity;
+
 
     public OrderItem() {
     }
 
-    public OrderItem(int id, Order order, Product product, int quantity) {
+    public OrderItem(int id, Order order, ProductSize productSize, int quantity) {
         super(id);
         this.order = order;
-        this.product = product;
+        this.productSize = productSize;
         this.quantity = quantity;
+        
     }
     
     public Order getOrder() {
@@ -21,11 +23,11 @@ public class OrderItem extends Model {
     public void setOrder(Order order) {
         this.order = order;
     }
-    public Product getProduct() {
-        return product;
+    public ProductSize getProductSize() {
+        return productSize;
     }
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductSize(ProductSize productSize) {
+        this.productSize = productSize;
     }
     public int getQuantity() {
         return quantity;
@@ -33,4 +35,5 @@ public class OrderItem extends Model {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
 }

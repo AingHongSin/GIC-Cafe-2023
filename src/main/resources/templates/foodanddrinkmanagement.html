@@ -48,7 +48,7 @@
                         <div class="sex" th:text="'$' + ${productSize.getSize().getPrice()}">M</div>
                         <div class="db" th:text="${productSize.getProduct().getCategory().getCategoryName()}">02/02/1999</div>
                         <div class="action">
-                            <button onclick="openCashierPopup(false, this)" th:attr="data-productSize-id = ${productSize.getId()}, data-product-id = ${productSize.getProduct().getId()}, data-product-type = ${productSize.getProduct().getCategory().getType()}, data-product-name = ${productSize.getProduct().getName()}, data-product-cate = ${productSize.getProduct().getCategory().getId()}, data-product-size = ${productSize.getSize().getSizeName()}, data-product-sizeDI = ${productSize.getSize().getId()}, data-product-price = ${productSize.getSize().getPrice()}, data-product-note = ${productSize.getProduct().getDescription()}, data-product-img = ${productSize.getProduct().getImageUrl()}">
+                            <button onclick="openCashierPopup(false, this)" th:attr="data-productSize-id = ${productSize.getId()}, data-product-id = ${productSize.getProduct().getId()}, data-product-type = ${productSize.getProduct().getCategory().getType()}, data-product-name = ${productSize.getProduct().getName()}, data-product-cate = ${productSize.getProduct().getCategory().getId()}, data-product-size = ${productSize.getSize().getSizeName()}, data-product-price = ${productSize.getSize().getPrice()}, data-product-note = ${productSize.getProduct().getDescription()}, data-product-img = ${productSize.getProduct().getImageUrl()}">
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M28.5934 9.17122L23.0084 3.58497C22.8227 3.39921 22.6022 3.25185 22.3595 3.15131C22.1169 3.05077 21.8568 2.99902 21.5941 2.99902C21.3314 2.99902 21.0713 3.05077 20.8286 3.15131C20.5859 3.25185 20.3654 3.39921 20.1797 3.58497L4.76595 19C4.57942 19.185 4.43154 19.4053 4.3309 19.648C4.23025 19.8907 4.17886 20.151 4.1797 20.4137V26C4.1797 26.5304 4.39041 27.0391 4.76548 27.4142C5.14056 27.7893 5.64926 28 6.1797 28H11.7659C12.0287 28.0008 12.289 27.9494 12.5317 27.8488C12.7744 27.7481 12.9947 27.6002 13.1797 27.4137L28.5934 12C28.7792 11.8142 28.9266 11.5937 29.0271 11.3511C29.1276 11.1084 29.1794 10.8483 29.1794 10.5856C29.1794 10.3229 29.1276 10.0628 29.0271 9.82012C28.9266 9.57744 28.7792 9.35695 28.5934 9.17122ZM11.7659 26H6.1797V20.4137L17.1797 9.41372L22.7659 15L11.7659 26ZM24.1797 13.585L18.5934 7.99997L21.5934 4.99997L27.1797 10.585L24.1797 13.585Z" fill="#343330"/>
                                 </svg>
@@ -188,8 +188,7 @@
                     document.getElementById("pType").value = data.getAttribute("data-product-type");
                     document.getElementById("pro_name").value = data.getAttribute("data-product-name");
                     document.getElementById("categorySelectID").value = data.getAttribute("data-product-cate");
-                    document.getElementById("size").value = data.getAttribute("data-product-sizeId")
-                    document.getElementById("size").text = data.getAttribute("data-product-size")
+                    document.getElementById("size").value = data.getAttribute("data-product-size")
                     document.getElementById("price").value = data.getAttribute("data-product-price");
                     document.getElementById("note").value = data.getAttribute("data-product-note");
 

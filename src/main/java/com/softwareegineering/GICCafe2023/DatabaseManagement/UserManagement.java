@@ -64,17 +64,17 @@ public class UserManagement extends Management<User> {
 
     public void updateUser(User user) {
         String query = "UPDATE user SET first_name=?, last_name=?, sex=?, role=?, dob=?, hire_date=?, age=?, username=?, password=?, " +
-                "image_url=?, served=?, last_login=? WHERE id=?";
+                "image_url=?, served=?, last_login=? WHERE user_id=?";
         update(user, query);
     }
 
     public void deleteUser(int id) {
-        String query = "DELETE FROM user WHERE id=?";
+        String query = "DELETE FROM user WHERE user_id=?";
         delete(id, query);
     }
 
     public void disableUser(int id) {
-        String query = "UPDATE user SET role='Unavailable' WHERE id=?";
+        String query = "UPDATE user SET role='Unavailable' WHERE user_id=?";
         disable(id, query);
     }
 
@@ -89,7 +89,7 @@ public class UserManagement extends Management<User> {
     }
 
     public User getUserById(int id) {
-        String query = "SELECT * FROM user WHERE id=?";
+        String query = "SELECT * FROM user WHERE user_id=?";
         return getById(id, query);
     }
 

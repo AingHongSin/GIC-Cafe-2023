@@ -6,17 +6,20 @@ public class Order extends Model {
     private User user;
     private Date dateCreated;
     private String status;
+    private Table table;
+    private double totalPrice;
 
 
-    
     public Order() {
     }
 
-    public Order(int id, User user, Date dateCreated, String status) {
+    public Order(int id, User user, Date dateCreated, String status, Table table, double totalPrice) {
         super(id);
         this.user = user;
         this.dateCreated = dateCreated;
         this.status = status;
+        this.table = table;
+        this.totalPrice = totalPrice;
     }
     
     public User getUser() {
@@ -36,6 +39,19 @@ public class Order extends Model {
     }
     public void setStatus(String status) {
         this.status = status;
+    }
+    public Table getTable() {
+        return table;
+    }
+    public void setTable(Table table) {
+        this.table = table;
+    }
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
 }

@@ -120,21 +120,6 @@ body {
   height: 50px;
 }
 
- /* .search {
-  border-radius: 5px;
-  background-color: #f1f1f1;
-  padding: 0.4rem;
-  margin-left: 0.5rem;
-}
- .search svg {
-  height: 16px;
-  fill: #000000;
-}
- .search input {
-  border: none;
-  background-color: transparent;
-  outline: none;
-} */
  .list-data {
   width: 100%;
   margin: auto;
@@ -147,7 +132,7 @@ body {
   display: flex;
   text-align: start;
   padding: 3px;
-
+  margin: auto;
 }
  .schema .id {
   width: 20%;
@@ -185,6 +170,7 @@ body {
 
 .pepole, .schema  {
   width: 90%;
+  margin: auto;
 }
  .pepole .people1 {
   display: flex;

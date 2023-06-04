@@ -33,7 +33,9 @@
 
 .logout-container form {
     width: 90%;
+    height: 55.69px;
     margin: auto;
+
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -42,7 +44,7 @@
 
 .logout-container button {
     border-radius: 5px;
-    height: 55.69px;
+    /* height: 55.69px; */
     width: 1508px;
     font-size: 17px;
     font-weight: 500;

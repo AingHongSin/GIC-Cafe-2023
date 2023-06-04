@@ -35,7 +35,7 @@ public class SizeManagement extends Management<Size> {
     }
 
     public void updateSize(Size size) {
-        String query = "UPDATE product_size SET size_id = ?, product_id = ? WHERE product_size_id = ?";
+        String query = "UPDATE size SET size_name = ?, price = ? WHERE size_id = ?";
         update(size, query);
     }
 

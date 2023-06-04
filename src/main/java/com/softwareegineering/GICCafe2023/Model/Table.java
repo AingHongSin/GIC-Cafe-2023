@@ -4,6 +4,8 @@ public class Table extends Model {
     private int tableNumber;
     private String tableType;
     private String tableStatus;
+    
+    public Table() {}
 
     public Table(int tableNumber, String tableType, String tableStatus) {
         this.tableNumber = tableNumber;

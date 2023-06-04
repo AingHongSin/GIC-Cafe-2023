@@ -1,5 +1,6 @@
 package com.softwareegineering.GICCafe2023.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,12 @@ public class FoodAndDrinkManagement_Controller {
     @GetMapping(path = "/foodanddrinkmanagement")
     public ModelAndView displayPage(Model model) {
 
+        ArrayList<String> sizes = new ArrayList<String>();
+        sizes.add("Small");
+        sizes.add("Medium");
+        sizes.add("Large");
+        
+        model.addAttribute("sizes", sizes);
         model.addAttribute("productSizes", getProductSizes());
         model.addAttribute("categories", getCategories());
 
