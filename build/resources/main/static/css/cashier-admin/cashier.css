@@ -111,13 +111,18 @@ body {
   margin-top: 20px;
 
 }
- .btn-container button {
+ .btn-container button, .btn-container a {
   background-color: #00bfcb;
   border: none;
   border-radius: 5px;
   padding: 0.5rem;
   width: 50px;
   height: 50px;
+}
+
+.btn-container a {
+  width: 32px;
+  height: 32px;
 }
 
  .list-data {
@@ -171,6 +176,10 @@ body {
 .pepole, .schema  {
   width: 90%;
   margin: auto;
+}
+.people {
+  height: 300px;
+  overflow-y: auto;
 }
  .pepole .people1 {
   display: flex;

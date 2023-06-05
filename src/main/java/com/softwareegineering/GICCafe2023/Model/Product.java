@@ -1,15 +1,15 @@
 package com.softwareegineering.GICCafe2023.Model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Product extends Model {
     private String name;
     private String description;
     private Category category;
     private String imageUrl;
-    private Date lastOrder;
+    private Timestamp lastOrder;
 
-    public Product(int id, String name, String description, Category category, String imageUrl, Date lastOrder) {
+    public Product(int id, String name, String description, Category category, String imageUrl, Timestamp lastOrder) {
         super(id);
         this.name = name;
         this.description = description;
@@ -53,10 +53,10 @@ public class Product extends Model {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-    public Date getLastOrder() {
+    public Timestamp getLastOrder() {
         return lastOrder;
     }
-    public void setLastOrder(Date lastOrder) {
+    public void setLastOrder(Timestamp lastOrder) {
         this.lastOrder = lastOrder;
     }
     

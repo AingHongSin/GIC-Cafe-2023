@@ -5,6 +5,7 @@ import com.softwareegineering.GICCafe2023.Model.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Date;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class UserManagement extends Management<User> {
         String password = rs.getString("password");
         String imageUrl = rs.getString("image_url");
         int served = rs.getInt("served");
-        Date lastLogin = rs.getDate("last_login");
+        Timestamp lastLogin = rs.getTimestamp("last_login");
 
         return new User(id, firstName, lastName, sex, role, dob, hireDate, age, username, password, imageUrl, served, lastLogin);
     }
@@ -43,7 +44,7 @@ public class UserManagement extends Management<User> {
         stmt.setString(9, model.getPassword());
         stmt.setString(10, model.getImageUrl());
         stmt.setInt(11, model.getServed());
-        stmt.setDate(12, model.getLastLogin());
+        stmt.setTimestamp(12, model.getLastLogin());
 
         // Additional parameters for add operation
         if (!isAddOperation) {

@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/category-admin/addCategory.css">
     <link rel="stylesheet" href="/static/css/logout-popup/styles.css" />
 
+    <script src="/static/js/function.js"></script>
     
     <script>
         function openCatePopup(isCreate, data) {
@@ -61,9 +62,13 @@
                         <hr>
                     </div>
                     
-                    <div th:each="category: ${categories}" class="sidebar-button" >
-                        <a th:text="${category.getCategoryName()}" id="cateName" th:href="@{'/categorymanagement/porductlist?cateID=' + ${category.getId()}}" method="post">Category</a>
+                    <div style="height: 77vh; overflow-y: auto;">
+
+                        <div th:each="category: ${categories}" class="sidebar-button">
+                            <a th:text="${category.getCategoryName()}" id="cateName" th:href="@{'/categorymanagement/porductlist?cateID=' + ${category.getId()}}" method="post">Category</a>
+                        </div>
                     </div>
+
                 
                 <div class="sidebar-button logout-button">
                     <a onclick="openCatePopup(true, null)">
@@ -103,7 +108,7 @@
                         <div class="db"><h3>Category</h3></div>
                         <div class="action"><h3>Action</h3></div>
                     </div>
-                    <div class="pepole">
+                    <div class="pepole"  style="height: 80vh; overflow-y: auto;">
                         
                         <div class="people1" th:each="product: ${products}">
                             <div class="id" th:text="${product.getId()}">c00001</div>

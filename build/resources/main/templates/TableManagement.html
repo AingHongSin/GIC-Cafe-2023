@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="/static/css/Table-Management/tablemanagent.css" />
         <link rel="stylesheet" href="/static/css/logout-popup/styles.css" />
         
-
+        <script src="/static/js/function.js"></script>
 
     </head>
     <body>
@@ -22,12 +22,12 @@
                 <div class="title"><h2>Table Management</h2></div>
                 
                 <div class="btn-container">
-                    <button onclick="openCashierPopup(true, null)">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M31.9997 16.9999C31.9997 17.2651 31.8943 17.5194 31.7068 17.707C31.5192 17.8945 31.2649 17.9999 30.9997 17.9999H28.9997V19.9999C28.9997 20.2651 28.8943 20.5194 28.7068 20.707C28.5192 20.8945 28.2649 20.9999 27.9997 20.9999C27.7345 20.9999 27.4801 20.8945 27.2926 20.707C27.105 20.5194 26.9997 20.2651 26.9997 19.9999V17.9999H24.9997C24.7345 17.9999 24.4801 17.8945 24.2926 17.707C24.105 17.5194 23.9997 17.2651 23.9997 16.9999C23.9997 16.7347 24.105 16.4803 24.2926 16.2928C24.4801 16.1052 24.7345 15.9999 24.9997 15.9999H26.9997V13.9999C26.9997 13.7347 27.105 13.4803 27.2926 13.2928C27.4801 13.1052 27.7345 12.9999 27.9997 12.9999C28.2649 12.9999 28.5192 13.1052 28.7068 13.2928C28.8943 13.4803 28.9997 13.7347 28.9997 13.9999V15.9999H30.9997C31.2649 15.9999 31.5192 16.1052 31.7068 16.2928C31.8943 16.4803 31.9997 16.7347 31.9997 16.9999ZM24.7659 24.3561C24.9367 24.5593 25.0197 24.8221 24.9967 25.0865C24.9737 25.3509 24.8466 25.5954 24.6434 25.7661C24.4402 25.9369 24.1775 26.0199 23.9131 25.9969C23.6486 25.9739 23.4042 25.8468 23.2334 25.6436C20.7184 22.6486 17.2609 20.9999 13.4997 20.9999C9.73843 20.9999 6.28093 22.6486 3.76593 25.6436C3.59519 25.8467 3.35079 25.9736 3.08648 25.9965C2.82217 26.0193 2.55961 25.9362 2.35655 25.7655C2.15349 25.5948 2.02658 25.3504 2.00372 25.0861C1.98087 24.8217 2.06394 24.5592 2.23468 24.3561C4.10218 22.1336 6.42468 20.5549 9.00593 19.7099C7.43831 18.7335 6.23133 17.2731 5.56759 15.5497C4.90386 13.8263 4.81949 11.9336 5.32724 10.1579C5.83499 8.3823 6.90724 6.82033 8.38176 5.70834C9.85629 4.59636 11.6529 3.99487 13.4997 3.99487C15.3465 3.99487 17.1431 4.59636 18.6176 5.70834C20.0921 6.82033 21.1644 8.3823 21.6721 10.1579C22.1799 11.9336 22.0955 13.8263 21.4318 15.5497C20.768 17.2731 19.561 18.7335 17.9934 19.7099C20.5747 20.5549 22.8972 22.1336 24.7659 24.3561ZM13.4997 18.9999C14.7853 18.9999 16.042 18.6187 17.1109 17.9044C18.1798 17.1902 19.0129 16.175 19.5049 14.9873C19.9969 13.7996 20.1256 12.4927 19.8748 11.2318C19.624 9.97091 19.0049 8.81272 18.0959 7.90368C17.1868 6.99464 16.0286 6.37557 14.7678 6.12477C13.5069 5.87396 12.2 6.00269 11.0122 6.49465C9.82451 6.98662 8.80935 7.81975 8.09512 8.88867C7.38089 9.95759 6.99968 11.2143 6.99968 12.4999C7.00166 14.2232 7.68712 15.8753 8.90567 17.0939C10.1242 18.3124 11.7764 18.9979 13.4997 18.9999Z" fill="white"/>
+                    <a method="get" href="/table/emptyTable">
+                        <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28.3965 16C28.3965 16.2652 28.2911 16.5196 28.1036 16.7071C27.9161 16.8946 27.6617 17 27.3965 17H17.3965V27C17.3965 27.2652 17.2911 27.5196 17.1036 27.7071C16.9161 27.8946 16.6617 28 16.3965 28C16.1313 28 15.8769 27.8946 15.6894 27.7071C15.5018 27.5196 15.3965 27.2652 15.3965 27V17H5.39648C5.13127 17 4.87691 16.8946 4.68938 16.7071C4.50184 16.5196 4.39648 16.2652 4.39648 16C4.39648 15.7348 4.50184 15.4804 4.68938 15.2929C4.87691 15.1054 5.13127 15 5.39648 15H15.3965V5C15.3965 4.73478 15.5018 4.48043 15.6894 4.29289C15.8769 4.10536 16.1313 4 16.3965 4C16.6617 4 16.9161 4.10536 17.1036 4.29289C17.2911 4.48043 17.3965 4.73478 17.3965 5V15H27.3965C27.6617 15 27.9161 15.1054 28.1036 15.2929C28.2911 15.4804 28.3965 15.7348 28.3965 16Z" fill="white"/>
                         </svg>
                             
-                    </button>
+                    </a>
                 </div>
 
             </header>
@@ -39,15 +39,15 @@
                     <div class="db"><h3>Status</h3></div>
                     <div class="action"><h3>Action</h3></div>
                 </div>
-                <div class="pepole">
+                <div class="pepole"  style="height: 80vh; overflow-y: auto;">
                     
                     <div class="people1" th:each="table: ${tables}">
-                        <form>
+                        <form method="post" action="/table/updatetable">
                             <input type="hidden" name="tableID" th:value="${table.getId()}">
 
                             <div class="id" th:text="${table.getId()}">c00001</div>
                             <div class="name"  style="width: 15%;">
-                                <input th:value="${table.getTableNumber()}" type="Number" style="width: 70%; margin: auto;">
+                                <input th:value="${table.getTableNumber()}" type="Number" name="tableNumber" style="width: 70%; margin: auto;">
                             </div>
     
                             <div class="sex" style="width: 20%;">
@@ -55,14 +55,17 @@
                                     <option th:each="type : ${tableType}" th:value="${type}" th:text="${type}"  th:selected="${type==table.getTableType()}"></option>
                                 </select>
                             </div>
-                            <div class="db" th:text="${table.getTableStatus()}">02/02/1999</div>
+                            <div class="db" >
+                                <input th:value="${table.getTableStatus()}" name="tableStatus" type="text" disabled style="width: 70%; margin: auto;">
+                            </div>
                             <div class="action">
     
-                                <button th:attr="data_id=${table.getId()}, data_tableNumer=${table.getTableNumber()}" onclick="openDeleteCatePopup(this)">
+                                <button th:attr="data_id=${table.getId()}, data_tableNumer=${table.getTableNumber()}" onclick="openDeleteCatePopup(this)" type="reset">
                                     <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M27.1797 6H5.17969C4.91447 6 4.66012 6.10536 4.47258 6.29289C4.28504 6.48043 4.17969 6.73478 4.17969 7C4.17969 7.26522 4.28504 7.51957 4.47258 7.70711C4.66012 7.89464 4.91447 8 5.17969 8H6.17969V26C6.17969 26.5304 6.3904 27.0391 6.76547 27.4142C7.14055 27.7893 7.64925 28 8.17969 28H24.1797C24.7101 28 25.2188 27.7893 25.5939 27.4142C25.969 27.0391 26.1797 26.5304 26.1797 26V8H27.1797C27.4449 8 27.6993 7.89464 27.8868 7.70711C28.0743 7.51957 28.1797 7.26522 28.1797 7C28.1797 6.73478 28.0743 6.48043 27.8868 6.29289C27.6993 6.10536 27.4449 6 27.1797 6ZM24.1797 26H8.17969V8H24.1797V26ZM10.1797 3C10.1797 2.73478 10.285 2.48043 10.4726 2.29289C10.6601 2.10536 10.9145 2 11.1797 2H21.1797C21.4449 2 21.6993 2.10536 21.8868 2.29289C22.0743 2.48043 22.1797 2.73478 22.1797 3C22.1797 3.26522 22.0743 3.51957 21.8868 3.70711C21.6993 3.89464 21.4449 4 21.1797 4H11.1797C10.9145 4 10.6601 3.89464 10.4726 3.70711C10.285 3.51957 10.1797 3.26522 10.1797 3Z" fill="#C7283C"/>
                                     </svg> 
                                 </button>
+
                                 <button type="submit">
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_858_6341)">
@@ -87,8 +90,8 @@
             <div class="logout-container" >
                 <h2>Delete</h2>
                 <h3 id="delMessage">Do you want to Logout?</h3>
-                <form method="get" action="/cashiermanagement/delUser">
-                    <input type="hidden" name="deleteUserId" id="userIDForDel">
+                <form method="get" action="/table/deleteTable">
+                    <input type="hidden" name="deleteTableID" id="userIDForDel">
     
                     <button class="cancel" onclick="closeDeleteCatePopup()" type="reset">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,14 +124,8 @@
                 document.getElementById("deleteCatePopup").style.display = 'none';
             }
 
-                function myFunction() {
-                    if (confirm("Do you want to logout!")) {
-                        window.location.href = '/';
-                    } else {
-                        location.reload();
-                    }
-                  }
+
         
-        </>
+        </script>
     </body>
 </html>

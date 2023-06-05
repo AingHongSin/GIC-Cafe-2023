@@ -44,6 +44,8 @@ public class Cashire_Controller {
     ) {
 
         System.out.println("SEX: " + sex);
+        System.out.println("File Path: " + photo_url);
+
 
         Date dob = new Date(dobUtil.getTime());
 

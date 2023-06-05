@@ -16,7 +16,7 @@ body {
 
 
 
-#fillForm input,
+/* #fillForm input,
 select {
     width: calc(100% - 160px);
     height: 40px;
@@ -27,7 +27,7 @@ select {
     background: rgba(228, 228, 228, 0.5);
     border: 1px solid rgba(228, 228, 228, 0.75);
     border-radius: 8px;   
-}
+} */
 
 /* Hide the default file input button */
 input[type="file"] {
@@ -40,6 +40,8 @@ input[type="file"] {
 form {
     width: 90%;
     height: 90%;
+    margin: auto;
+
 }
 
 /* Style the custom button */
@@ -51,6 +53,11 @@ form {
     border-radius: 4px;
     background-color: #f5f5f5;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 16px;
+    
 }
 
 /* Style the camera icon */
@@ -64,12 +71,15 @@ form {
 /* Style the image preview container */
 .image-preview {
     max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Style the image preview */
 .image-preview img {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
+
     border-radius: 100%;
     margin-bottom: 5px;
 }
@@ -79,8 +89,9 @@ form {
 #heroForm {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: stretch;
+
 }
 
 #fillForm,
@@ -100,6 +111,21 @@ form {
     height: 40px;
 }
 
-.fillInput input {
-    /* width: 300px; */
+.fillInput input, select {
+    width: calc(100% - 160px);
+    height: 40px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background: rgba(228, 228, 228, 0.5);
+    border: 1px solid rgba(228, 228, 228, 0.75);
+    border-radius: 8px;   
+}
+
+#imgUpload {
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    gap: 1rem;
 }

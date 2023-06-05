@@ -1,10 +1,10 @@
 package com.softwareegineering.GICCafe2023.Model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Order extends Model {
     private User user;
-    private Date dateCreated;
+    private Timestamp dateCreated;
     private String status;
     private Table table;
     private double totalPrice;
@@ -13,7 +13,7 @@ public class Order extends Model {
     public Order() {
     }
 
-    public Order(int id, User user, Date dateCreated, String status, Table table, double totalPrice) {
+    public Order(int id, User user, Timestamp dateCreated, String status, Table table, double totalPrice) {
         super(id);
         this.user = user;
         this.dateCreated = dateCreated;
@@ -28,10 +28,10 @@ public class Order extends Model {
     public void setUser(User user) {
         this.user = user;
     }
-    public Date getDateCreated() {
+    public Timestamp getDateCreated() {
         return dateCreated;
     }
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(Timestamp dateCreated) {
         this.dateCreated = dateCreated;
     }
     public String getStatus() {
