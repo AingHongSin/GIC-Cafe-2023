@@ -22,7 +22,8 @@ public class ProductManagement extends Management<Product> {
         Category category = getCategoryById(categoryId);
 
         String imageUrl = rs.getString("image_url");
-        java.sql.Date lastOrder = rs.getDate("last_order");
+        Timestamp lastOrder = rs.getTimestamp("last_order");
+
 
         return new Product(id, name, description, category, imageUrl, lastOrder);
     }
@@ -33,7 +34,7 @@ public class ProductManagement extends Management<Product> {
         stmt.setString(2, product.getDescription());
         stmt.setInt(3, product.getCategory().getId());
         stmt.setString(4, product.getImageUrl());
-        stmt.setDate(5, product.getLastOrder());
+        stmt.setTimestamp(5, product.getLastOrder());
 
         if (!isAddOperation) {
             stmt.setInt(6, product.getId());
@@ -53,11 +54,6 @@ public class ProductManagement extends Management<Product> {
     public void deleteProduct(int id) {
         String query = "DELETE FROM product WHERE product_id=?";
         delete(id, query);
-    }
-
-    public void disableProduct(int id) {
-        String query = "UPDATE product SET is_disabled=? WHERE product_id=?";
-
     }
 
     public List<Product> getAllProducts() {

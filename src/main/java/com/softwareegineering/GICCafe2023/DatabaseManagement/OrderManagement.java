@@ -21,7 +21,7 @@ public class OrderManagement extends Management<Order> {
         User user = getUserById(userId); // Implement this method to fetch the user from the database
         order.setUser(user);
         
-        order.setDateCreated(rs.getDate("date_created"));
+        order.setDateCreated(rs.getTimestamp("date_created"));
         order.setStatus(rs.getString("status"));
         
         // Retrieve the table using the table_id from the result set
@@ -39,7 +39,7 @@ public class OrderManagement extends Management<Order> {
     protected void setStatementParams(Boolean isAddOperation, PreparedStatement stmt, Order order) throws SQLException {
         // Set the statement parameters based on the order properties
         stmt.setInt(1, order.getUser().getId());
-        stmt.setDate(2, order.getDateCreated());
+        stmt.setTimestamp(2, order.getDateCreated());
         stmt.setString(3, order.getStatus());
         stmt.setInt(4, order.getTable().getId());
         stmt.setDouble(5, order.getTotalPrice());
@@ -56,7 +56,7 @@ public class OrderManagement extends Management<Order> {
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setInt(1, order.getUser().getId());
-            stmt.setDate(2, order.getDateCreated());
+            stmt.setTimestamp(2, order.getDateCreated());
             stmt.setString(3, order.getStatus());
             stmt.setInt(4, order.getTable().getId());
             stmt.setDouble(5, order.getTotalPrice());

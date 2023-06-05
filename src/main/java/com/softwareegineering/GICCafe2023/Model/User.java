@@ -1,5 +1,6 @@
 package com.softwareegineering.GICCafe2023.Model;
 
+import java.sql.Timestamp;
 import java.sql.Date;
 
 public class User extends Model {
@@ -14,7 +15,7 @@ public class User extends Model {
     private String password;
     private String imageUrl;
     private int served;
-    private Date lastLogin;
+    private Timestamp lastLogin;
 
 
 
@@ -52,7 +53,7 @@ public class User extends Model {
 
 
     public User(int id, String firstName, String lastName, String sex, String role, Date dob, Date hireDate, int age,
-            String username, String password, String image_url, int served, Date lastLogin) {
+            String username, String password, String image_url, int served, Timestamp lastLogin) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -130,11 +131,11 @@ public class User extends Model {
     public void setServed(int served) {
         this.served = served;
     }
-    public Date getLastLogin() {
+    public Timestamp getLastLogin() {
         return lastLogin;
     }
 
-    public void setLastLogin(Date lastLogin) {
+    public void setLastLogin(Timestamp lastLogin) {
         this.lastLogin = lastLogin;
     }
     public Date getHireDate() {

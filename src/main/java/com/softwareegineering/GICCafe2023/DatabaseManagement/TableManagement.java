@@ -13,7 +13,7 @@ public class TableManagement extends Management<Table> {
         table.setId(rs.getInt("table_id"));
         table.setTableNumber(rs.getInt("tableNumber"));
         table.setTableType(rs.getString("table_type"));
-        table.setTableStatus(rs.getString("table_status"));
+        table.setTableStatus(rs.getString("table_statue"));
         return table;
     }
         
@@ -52,5 +52,11 @@ public class TableManagement extends Management<Table> {
     public void deleteTable(int tableId) {
         String query = "DELETE FROM `table` WHERE table_id = ?";
         delete(tableId, query);
+    }
+
+    // Implement methods to fetch Order and ProductSize by their IDs from the database
+    private OrderItem getOrderItemById(int orderItemId) {
+        OrderItemManagement orderItemManagement = new OrderItemManagement();
+        return orderItemManagement.getOrderItemById(orderItemId);
     }
 }

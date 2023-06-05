@@ -3,6 +3,10 @@ package com.softwareegineering.GICCafe2023.Controller;
 import com.softwareegineering.GICCafe2023.DatabaseManagement.UserManagement;
 import com.softwareegineering.GICCafe2023.Model.User;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
+import org.apache.catalina.startup.UserConfig;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +36,15 @@ public class Login_Controller {
         if (user != null) {
             // Redirect to a success page or perform other actions
             
-            if (user.getRole().equals("Admin")) return new ModelAndView("redirect:/cashiermanagement");
-            else if (user.getRole().equals("Cashier")) return new ModelAndView("redirect:/tableselection");
+            if (user.getRole().equals("Admin")) {
+                updateCurrentTimeStamp(user);
+
+                return new ModelAndView("redirect:/tablex");
+            } else if (user.getRole().equals("Cashier")){
+                updateCurrentTimeStamp(user);
+
+                return new ModelAndView("redirect:/tableselection");
+            } 
 
             return new ModelAndView("login");
         } else {
@@ -42,5 +53,16 @@ public class Login_Controller {
             modelAndView.addObject("error", "Invalid username or password");
             return modelAndView;
         }
+    }
+
+
+    private void updateCurrentTimeStamp(User user) {
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        user.setLastLogin(Timestamp.valueOf(currentDateTime));
+
+        UserManagement userManagement = new UserManagement();
+        userManagement.updateUser(user);
     }
 }

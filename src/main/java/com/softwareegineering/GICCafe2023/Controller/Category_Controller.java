@@ -104,11 +104,7 @@ public class Category_Controller {
 
         ProductManagement  productManagement = new ProductManagement();
         List<Product> products = productManagement.getAllProducts();
-
-        for (Product product : products) {
-            System.out.println("PRODUCT->" + product.getCategory().getType());
-        }
-        
+       
         return products;
     }
 
