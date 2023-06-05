@@ -32,7 +32,7 @@ public class Login_Controller {
         if (user != null) {
             // Redirect to a success page or perform other actions
             
-            if (user.getRole().equals("Admin")) return new ModelAndView("redirect:/categorymanagement");
+            if (user.getRole().equals("Admin")) return new ModelAndView("redirect:/cashiermanagement");
             else if (user.getRole().equals("Cashier")) return new ModelAndView("redirect:/tableselection");
 
             return new ModelAndView("login");

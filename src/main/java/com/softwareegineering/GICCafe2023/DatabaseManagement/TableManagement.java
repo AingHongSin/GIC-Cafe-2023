@@ -13,7 +13,7 @@ public class TableManagement extends Management<Table> {
         table.setId(rs.getInt("table_id"));
         table.setTableNumber(rs.getInt("tableNumber"));
         table.setTableType(rs.getString("table_type"));
-        table.setTableStatus(rs.getString("table_statue"));
+        table.setTableStatus(rs.getString("table_status"));
         return table;
     }
         
