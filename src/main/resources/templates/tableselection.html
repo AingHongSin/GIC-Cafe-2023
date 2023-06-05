@@ -31,46 +31,19 @@
                 </div>
                 <div class="table-button">
                     <div class="btn">
-                        <div>01</div>
-                        <div>02</div>
-                        <div>03</div>
-                        <div>04</div>
-                        <div>05</div>
-                        <div>06</div>
-                        <div>07</div>
-                        <div>08</div>
-                        <div>09</div>
-                        <div>10</div>
-                        <div>11</div>
-                        <div>12</div>
-                        <div>13</div>
-                        <div>14</div>
-                        <div class="delivery">15</div>
-                        <div class="delivery">16</div>
-                        <div class="delivery">17</div>
-                        <div class="delivery">18</div>
-                        <div class="delivery">19</div>
-                        <div class="delivery">20</div>
-                        <div class="delivery">21</div>
-                        <div class="delivery">22</div>
-                        <div class="delivery">23</div>
-                        <div class="delivery">24</div>
-                        <div class="delivery">25</div>
-                        <div class="delivery">26</div>
-                        <div class="delivery">27</div>
-                        <div class="delivery">28</div>
-                        <div class="delivery">29</div>
-                        <div class="delivery">30</div>
+                        <div th:each="table : ${tables}" th:text=${table.getTableNumber()} th:onclick="'showTableDetails(`'+${table.getTableNumber()}+'`)'"></div>
+                      
                     </div>
+
                 </div>
             </div>
-            <div class="table-information">
+            <div class="table-information" id="table_info" hidden>
                 <div class="text-iformation">
                     <h2>TABLE INFORMATION</h2>
 
-                    <span>No:<p>00</p></span>
-                    <span>Status:<p>Avaliable</p></span>
-                    <span>Paid:<p>Unpaid</p></span>
+                    <span>No:<p id="tableNumber">00</p></span>
+                    <span>Status:<p id="tableStatus">Avaliable</p></span>
+                    <span>Paid:<p id="tablePaid">Unpaid</p></span>
                     
                 </div>
                 <div class="order">
@@ -79,7 +52,7 @@
                         <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col">Iteam</th>
+                                <th scope="col">Item</th>
                                 <th scope="col">Size</th>
                                 <th scope="col">Qty</th>
                                 <th scope="col">Price</th>
@@ -87,10 +60,16 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th scope="row">12</th>
+                                <td>124</td>
+                                <td>1414</td>
+                                <td>1241</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">12</th>
+                                <td>124</td>
+                                <td>1414</td>
+                                <td>1241</td>
                               </tr>
                             </tbody>
                           </table>
@@ -116,6 +95,16 @@ document.getElementById('dayName').innerHTML = dayName;
 document.getElementById('dayNumber').innerHTML =
 dayNumber;
 document.getElementById('year').innerHTML = year;
+
+function showTableDetails(tableNumber) {
+            
+    console.log(tableNumber)
+    document.getElementById('tableNumber').innerHTML = tableNumber;
+    document.getElementById('tableStatus').innerHTML = tableNumber;//not done yet
+    document.getElementById('tablePaid').innerHTML = tableNumber;//not done yet
+    document.getElementById('table_info').hidden = false;
+}
+
 </script>
   
 

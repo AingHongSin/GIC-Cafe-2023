@@ -53,4 +53,10 @@ public class TableManagement extends Management<Table> {
         String query = "DELETE FROM `table` WHERE table_id = ?";
         delete(tableId, query);
     }
+
+    // Implement methods to fetch Order and ProductSize by their IDs from the database
+    private OrderItem getOrderItemById(int orderItemId) {
+        OrderItemManagement orderItemManagement = new OrderItemManagement();
+        return orderItemManagement.getOrderItemById(orderItemId);
+    }
 }

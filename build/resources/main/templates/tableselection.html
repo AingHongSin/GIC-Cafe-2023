@@ -30,8 +30,12 @@
                     <h2>TABLE LIST</h2>
                 </div>
                 <div class="table-button">
-                    <div class="btn">
-                        <div>01</div>
+                    <div class="btn" th:each="table : ${tables}">
+                      <div th:text="${table.tableNumber}"></div>
+                      <!-- <th:block th:each="table : ${tables}">
+                          <div th:text="${table.tableNumber}"></div>
+                      </th:block> -->
+                        <!-- <div>01</div>
                         <div>02</div>
                         <div>03</div>
                         <div>04</div>
@@ -60,11 +64,11 @@
                         <div class="delivery">27</div>
                         <div class="delivery">28</div>
                         <div class="delivery">29</div>
-                        <div class="delivery">30</div>
+                        <div class="delivery">30</div> -->
                     </div>
                 </div>
             </div>
-            <div class="table-information">
+            <div class="table-information" id="table_info" hidden>
                 <div class="text-iformation">
                     <h2>TABLE INFORMATION</h2>
 
@@ -116,6 +120,20 @@ document.getElementById('dayName').innerHTML = dayName;
 document.getElementById('dayNumber').innerHTML =
 dayNumber;
 document.getElementById('year').innerHTML = year;
+
+const buttons = document.querySelectorAll('.btn > div');
+
+  // Add onclick function to each button
+  buttons.forEach(button => {
+    button.onclick = function() {
+      // Perform desired action when a button is clicked
+    
+      console.log('Button clicked:', button.textContent);
+      // You can replace the console.log statement with your custom logic
+        document.getElementById("table_info").hidden = false;
+    };
+  });
+
 </script>
   
 

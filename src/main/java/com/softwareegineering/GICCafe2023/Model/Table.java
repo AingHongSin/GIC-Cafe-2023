@@ -4,6 +4,7 @@ public class Table extends Model {
     private int tableNumber;
     private String tableType;
     private String tableStatus;
+    private OrderItem orderItem;
     
     public Table() {}
 
@@ -44,5 +45,13 @@ public class Table extends Model {
 
     public void setTableStatus(String tableStatus) {
         this.tableStatus = tableStatus;
+    }
+
+    public OrderItem getOrderItem() {
+        return orderItem;
+    }
+
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItem = orderItem;
     }
 }
