@@ -19,6 +19,7 @@ public class OrderItemManagement extends Management<OrderItem> {
         int quantity = rs.getInt("quantity");
         boolean cream = rs.getBoolean("cream");
         double sugar = rs.getDouble("sugar");
+        String note = rs.getString("note");
 
         OrderManagement orderManagement = new OrderManagement();
         Order order = orderManagement.getOrderById(orderId);
@@ -26,7 +27,7 @@ public class OrderItemManagement extends Management<OrderItem> {
         ProductSizeManagement productSizeManagement = new ProductSizeManagement();
         ProductSize productSize = productSizeManagement.getProductSizeById(productSizeId);
 
-        return new OrderItem(orderItemId, order, productSize, quantity, cream, sugar);
+        return new OrderItem(orderItemId, order, productSize, quantity, cream, sugar, note);
     }
 
     @Override
@@ -36,19 +37,20 @@ public class OrderItemManagement extends Management<OrderItem> {
         stmt.setInt(3, orderItem.getQuantity());
         stmt.setBoolean(4, orderItem.isCream());
         stmt.setDouble(5, orderItem.getSugar());
+        stmt.setString(6, orderItem.getNote());
 
         if (!isAddOperation) {
-            stmt.setInt(6, orderItem.getId());
+            stmt.setInt(7, orderItem.getId());
         }
     }
 
     public int addOrderItem(OrderItem orderItem) {
-        String query = "INSERT INTO order_item (order_id, product_size_id, quantity, cream, sugar) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO order_item (order_id, product_size_id, quantity, cream, sugar, note) VALUES (?, ?, ?, ?, ?, ?)";
         return add(orderItem, query);
     }
 
     public void updateOrderItem(OrderItem orderItem) {
-        String query = "UPDATE order_item SET order_id=?, product_size_id=?, quantity=?, cream=?, sugar=? WHERE order_item_id=?";
+        String query = "UPDATE order_item SET order_id=?, product_size_id=?, quantity=?, cream=?, sugar=?, note=? WHERE order_item_id=?";
         update(orderItem, query);
     }
 
@@ -71,7 +73,6 @@ public class OrderItemManagement extends Management<OrderItem> {
         String query = "SELECT * FROM order_item WHERE order_id=?";
         return query(String.valueOf(orderId), query);
     }
-
 
 
     // Implement methods to fetch Order and ProductSize by their IDs from the database

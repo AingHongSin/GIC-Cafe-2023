@@ -45,19 +45,19 @@
                 </div>
                 <div class="pepole"  style="height: 80vh; overflow-y: auto;">
                     
-                    <div class="people1" th:each="productSize: ${productSizes}" onclick="openCashierPopup(false, false, true, this)" th:attr="data-productSize-id = ${productSize.getId()}, data-product-id = ${productSize.getProduct().getId()}, data-product-type = ${productSize.getProduct().getCategory().getType()}, data-product-name = ${productSize.getProduct().getName()}, data-product-cate = ${productSize.getProduct().getCategory().getId()}, data-product-size = ${productSize.getSize().getSizeName()}, data-product-price = ${productSize.getSize().getPrice()}, data-product-note = ${productSize.getProduct().getDescription()}, data-product-img = ${productSize.getProduct().getImageUrl()}, data-product-lastOrder=${productSize.getProduct().getLastOrder()}">
+                    <div class="people1" th:each="productSize: ${productSizes}" onclick="openCashierPopup(false, false, true, this)" th:attr="data-productSize-id = ${productSize.getProduct().getId()}, data-product-id = ${productSize.getProduct().getId()}, data-product-type = ${productSize.getProduct().getCategory().getType()}, data-product-name = ${productSize.getProduct().getName()}, data-product-cate = ${productSize.getProduct().getCategory().getId()}, data-product-size = ${productSize.getSizeList().get(0).getSizeName()}, data-product-price = ${productSize.getSizeList().get(0).getPrice()}, data-product-note = ${productSize.getProduct().getDescription()}, data-product-img = ${productSize.getProduct().getImageUrl()}, data-product-lastOrder=${productSize.getProduct().getLastOrder()}">
                         <div class="id" th:text="${productSize.getProduct().getId()}">c00001</div>
                         <div class="name" th:text="${productSize.getProduct().getName()}">Jame Bone</div>
-                        <div class="sex" th:text="'$' + ${productSize.getSize().getPrice()}">M</div>
+                        <div class="sex" th:text="'$' + ${productSize.getSizeList().get(0).getPrice()}">M</div>
                         <div class="db" th:text="${productSize.getProduct().getCategory().getCategoryName()}">02/02/1999</div>
                         <div class="action">
-                            <button id="productEditButton" th:attr="data-productSize-id = ${productSize.getId()}, data-product-id = ${productSize.getProduct().getId()}, data-product-type = ${productSize.getProduct().getCategory().getType()}, data-product-name = ${productSize.getProduct().getName()}, data-product-cate = ${productSize.getProduct().getCategory().getId()}, data-product-size = ${productSize.getSize().getSizeName()}, data-product-price = ${productSize.getSize().getPrice()}, data-product-note = ${productSize.getProduct().getDescription()}, data-product-img = ${productSize.getProduct().getImageUrl()}">
+                            <button onclick="updateButtonClick(event, this)" th:attr=" data-product-id = ${productSize.getProduct().getId()}, data-product-type = ${productSize.getProduct().getCategory().getType()}, data-product-name = ${productSize.getProduct().getName()}, data-product-cate = ${productSize.getProduct().getCategory().getId()}, data-product-size = ${productSize.getSizeList().get(0).getSizeName()}, data-product-price = ${productSize.getSizeList().get(0).getPrice()}, data-product-note = ${productSize.getProduct().getDescription()}, data-product-img = ${productSize.getProduct().getImageUrl()}">
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M28.5934 9.17122L23.0084 3.58497C22.8227 3.39921 22.6022 3.25185 22.3595 3.15131C22.1169 3.05077 21.8568 2.99902 21.5941 2.99902C21.3314 2.99902 21.0713 3.05077 20.8286 3.15131C20.5859 3.25185 20.3654 3.39921 20.1797 3.58497L4.76595 19C4.57942 19.185 4.43154 19.4053 4.3309 19.648C4.23025 19.8907 4.17886 20.151 4.1797 20.4137V26C4.1797 26.5304 4.39041 27.0391 4.76548 27.4142C5.14056 27.7893 5.64926 28 6.1797 28H11.7659C12.0287 28.0008 12.289 27.9494 12.5317 27.8488C12.7744 27.7481 12.9947 27.6002 13.1797 27.4137L28.5934 12C28.7792 11.8142 28.9266 11.5937 29.0271 11.3511C29.1276 11.1084 29.1794 10.8483 29.1794 10.5856C29.1794 10.3229 29.1276 10.0628 29.0271 9.82012C28.9266 9.57744 28.7792 9.35695 28.5934 9.17122ZM11.7659 26H6.1797V20.4137L17.1797 9.41372L22.7659 15L11.7659 26ZM24.1797 13.585L18.5934 7.99997L21.5934 4.99997L27.1797 10.585L24.1797 13.585Z" fill="#343330"/>
                                 </svg>
                             </button>
 
-                            <button onclick="openDeleteCatePopup(this)"  th:attr="data-productSize-id = ${productSize.getId()}, data-product-name = ${productSize.getProduct().getName()}" a>
+                            <button onclick="openDeleteCatePopup(event, this)"  th:attr="data-productSize-id = ${productSize.getProduct().getId()}, data-product-name = ${productSize.getProduct().getName()}" a>
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M27.1797 6H5.17969C4.91447 6 4.66012 6.10536 4.47258 6.29289C4.28504 6.48043 4.17969 6.73478 4.17969 7C4.17969 7.26522 4.28504 7.51957 4.47258 7.70711C4.66012 7.89464 4.91447 8 5.17969 8H6.17969V26C6.17969 26.5304 6.3904 27.0391 6.76547 27.4142C7.14055 27.7893 7.64925 28 8.17969 28H24.1797C24.7101 28 25.2188 27.7893 25.5939 27.4142C25.969 27.0391 26.1797 26.5304 26.1797 26V8H27.1797C27.4449 8 27.6993 7.89464 27.8868 7.70711C28.0743 7.51957 28.1797 7.26522 28.1797 7C28.1797 6.73478 28.0743 6.48043 27.8868 6.29289C27.6993 6.10536 27.4449 6 27.1797 6ZM24.1797 26H8.17969V8H24.1797V26ZM10.1797 3C10.1797 2.73478 10.285 2.48043 10.4726 2.29289C10.6601 2.10536 10.9145 2 11.1797 2H21.1797C21.4449 2 21.6993 2.10536 21.8868 2.29289C22.0743 2.48043 22.1797 2.73478 22.1797 3C22.1797 3.26522 22.0743 3.51957 21.8868 3.70711C21.6993 3.89464 21.4449 4 21.1797 4H11.1797C10.9145 4 10.6601 3.89464 10.4726 3.70711C10.285 3.51957 10.1797 3.26522 10.1797 3Z" fill="#C7283C"/>
                                 </svg> 
@@ -175,10 +175,10 @@
 
         <script>
 
-            document.getElementById("productEditButton").addEventListener('click', function(event) {
+            function updateButtonClick(event, data) {
                 event.stopPropagation()
-                openCashierPopup(false, true, false, this)
-            })
+                openCashierPopup(false, true, false, data)
+            }
 
             function showPreview(event) {
                 var input = event.target;
@@ -213,8 +213,6 @@
                     disabledElement(true)
                 } else {
                     disabledElement(false)
-
-                    "data-product-created"
                 }
 
 
@@ -222,7 +220,6 @@
 
             function displayData(data) {
                 document.getElementById("productID").value = data.getAttribute("data-product-id");
-                document.getElementById("productSizeID").value = data.getAttribute("data-productSize-id");
 
                 document.getElementById("pType").value = data.getAttribute("data-product-type");
                 document.getElementById("pro_name").value = data.getAttribute("data-product-name");
@@ -262,7 +259,9 @@
                 document.getElementById("popupBackground").style.display = 'none';
             }
 
-            function openDeleteCatePopup(user) {
+            function openDeleteCatePopup(event, user) {
+
+                event.stopPropagation()
                 document.getElementById("deleteCatePopup").style.display = 'block';
 
                 document.getElementById("delMessage").innerHTML = `Do you want to delete ${user.getAttribute("data-product-name")}?`

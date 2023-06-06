@@ -1,6 +1,5 @@
 package com.softwareegineering.GICCafe2023.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,11 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.softwareegineering.GICCafe2023.DatabaseManagement.CategoryManagement;
-import com.softwareegineering.GICCafe2023.DatabaseManagement.ProductManagement;
-import com.softwareegineering.GICCafe2023.DatabaseManagement.SizeManagement;
+import com.softwareegineering.GICCafe2023.DatabaseManagement.*;
 import com.softwareegineering.GICCafe2023.Model.*;
-import com.softwareegineering.GICCafe2023.ViewModel.ProductSizesViewModel;
 
 import org.springframework.ui.Model;
 
@@ -113,19 +109,12 @@ public class DrinkAndFood_Controller {
         }
     }
 
-    private ArrayList<ProductSizesViewModel> getAllProductSizesViewByProductList(List<Product> products) {
-        ArrayList<ProductSizesViewModel> productSizeDisplayList = new ArrayList<ProductSizesViewModel>();
 
-        SizeManagement sizeManagement = new SizeManagement();
-        for (Product product : products) {
-            List<Size> sizes = sizeManagement.getAllSizeOfProduct(product.getId());
-            ProductSizesViewModel productSizesViewModel = new ProductSizesViewModel(product, sizes);
-            productSizeDisplayList.add(productSizesViewModel);
-        }
-        
-        return productSizeDisplayList;
-    } 
-
+    private List<ProductSizeList> getAllProductSizesViewByProductList(List<Product> products) {
+        ProductSizeListMangement productSizeListMangement = new ProductSizeListMangement();
+        return productSizeListMangement.getProductWithListSizeByProductList(products); 
+    }
+ 
     
 }
 

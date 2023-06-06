@@ -1,18 +1,24 @@
-package com.softwareegineering.GICCafe2023.ViewModel;
+package com.softwareegineering.GICCafe2023.Model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.softwareegineering.GICCafe2023.Model.*;
 
-public class ProductSizesViewModel extends Model{
+public class ProductSizeList extends Model{
     
     private Product product;
     private List<Size> sizeList;
 
 
     
-    public ProductSizesViewModel(Product product, List<Size> sizeList) {
+    public ProductSizeList(int id, Product product, List<Size> sizeList) {
+        super(id);
+        this.product = product;
+        this.sizeList = sizeList;
+    }
+
+
+    public ProductSizeList(Product product, List<Size> sizeList) {
         this.product = product;
         this.sizeList = sizeList;
     }
@@ -30,8 +36,5 @@ public class ProductSizesViewModel extends Model{
     public void setSizeList(ArrayList<Size> sizeList) {
         this.sizeList = sizeList;
     }
-
-    
-
     
 }

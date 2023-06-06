@@ -13,7 +13,7 @@ public class TableManagement extends Management<Table> {
         table.setId(rs.getInt("table_id"));
         table.setTableNumber(rs.getInt("tableNumber"));
         table.setTableType(rs.getString("table_type"));
-        table.setTableStatus(rs.getString("table_statue"));
+        table.setTableStatus(rs.getString("table_status"));
         return table;
     }
         
@@ -30,12 +30,12 @@ public class TableManagement extends Management<Table> {
     }
 
     public int addTable(Table table) {
-        String query = "INSERT INTO `table` (tableNumber, table_type, table_statue) VALUES (?, ?, ?)";
+        String query = "INSERT INTO `table` (tableNumber, table_type, table_status) VALUES (?, ?, ?)";
         return add(table, query);
     }
 
     public void updateTable(Table table) {
-        String query = "UPDATE `table` SET tableNumber = ?, table_type = ?, table_statue = ? WHERE table_id = ?";
+        String query = "UPDATE `table` SET tableNumber = ?, table_type = ?, table_status = ? WHERE table_id = ?";
         update(table, query);
     }
 

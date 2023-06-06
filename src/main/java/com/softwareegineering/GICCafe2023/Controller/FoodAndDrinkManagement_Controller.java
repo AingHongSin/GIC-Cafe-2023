@@ -10,14 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.softwareegineering.GICCafe2023.DatabaseManagement.CategoryManagement;
-import com.softwareegineering.GICCafe2023.DatabaseManagement.ProductManagement;
-import com.softwareegineering.GICCafe2023.DatabaseManagement.ProductSizeManagement;
-import com.softwareegineering.GICCafe2023.DatabaseManagement.SizeManagement;
-import com.softwareegineering.GICCafe2023.Model.Category;
-import com.softwareegineering.GICCafe2023.Model.Product;
-import com.softwareegineering.GICCafe2023.Model.ProductSize;
-import com.softwareegineering.GICCafe2023.Model.Size;
+import com.softwareegineering.GICCafe2023.DatabaseManagement.*;
+import com.softwareegineering.GICCafe2023.Model.*;
 
 
 @Controller
@@ -32,7 +26,7 @@ public class FoodAndDrinkManagement_Controller {
         sizes.add("Large");
         
         model.addAttribute("sizes", sizes);
-        model.addAttribute("productSizes", getProductSizes());
+        model.addAttribute("productSizes", getProductWithSizeList());
         model.addAttribute("categories", getCategories());
 
         return new ModelAndView("foodanddrinkmanagement");
@@ -46,7 +40,6 @@ public class FoodAndDrinkManagement_Controller {
         @RequestParam("productName") String productName,
         @RequestParam("productCategory") int productCategory_id,
         @RequestParam("productSize") String sizeProduct,
-        @RequestParam("productSizeID") int productSizeID,
         @RequestParam("productPrice") double productPrice,
         @RequestParam("productDescription") String productDescription,
         @RequestParam("productImage") String productImage
@@ -69,23 +62,23 @@ public class FoodAndDrinkManagement_Controller {
                 
             } else { // UPDATE MODE
 
-                System.out.println(("Porduct Size ID: "+ productSizeID));
-                ProductSize productSize = getAProductSize(productSizeID);
+                // System.out.println(("Porduct Size ID: "+ productSizeID));
+                // ProductSize productSize = getAProductSize(productSizeID);
 
-                System.out.println("Size: " + productSize);
-                System.out.println("Size: " + productSize.getSize().getSizeName());
+                // System.out.println("Size: " + productSize);
+                // System.out.println("Size: " + productSize.getSize().getSizeName());
 
-                Size size = productSize.getSize();
-                size.setSizeName(sizeProduct);
-                size.setPrice(productPrice);
-                updateSize(size);
+                // Size size = productSize.getSize();
+                // size.setSizeName(sizeProduct);
+                // size.setPrice(productPrice);
+                // updateSize(size);
 
 
                 Product product = new Product(productID, productName, productDescription, getACategory(productCategory_id), productImage);
                 productManagement.updateProduct(product);
             }
 
-            model.addAttribute("productSizes", getProductSizes());
+            model.addAttribute("productSizes", getProductWithSizeList());
             model.addAttribute("categories", getCategories());
             return new ModelAndView("redirect:/foodanddrinkmanagement");
     }
@@ -94,25 +87,19 @@ public class FoodAndDrinkManagement_Controller {
     public ModelAndView deleteProductHandler(Model model,
         @RequestParam("deleteProdID") int deleteProdID) {
         
-            ProductSize productSize = getAProductSize(deleteProdID);
 
-            ProductManagement productManagement = new ProductManagement();
-            productManagement.deleteProduct(productSize.getProduct().getId());
+            ProductSizeListMangement productSizeListMangement = new ProductSizeListMangement();
+            productSizeListMangement.deleteProductAndAllSize(getProductByID(deleteProdID));
 
-            ProductSizeManagement productSizeManagement = new ProductSizeManagement();
-            productSizeManagement.deleteProductSize(productSize.getId());
-
-            SizeManagement sizeManagement = new SizeManagement();
-            sizeManagement.deleteSize(productSize.getSize().getId());
             
-        model.addAttribute("productSizes", getProductSizes());
-        model.addAttribute("categories", getCategories());
+            model.addAttribute("productSizes", getProductWithSizeList());
+            model.addAttribute("categories", getCategories());
         return new ModelAndView("/foodanddrinkmanagement");
     }
 
-    private List<ProductSize> getProductSizes() {
-        ProductSizeManagement  productSizeManagement = new ProductSizeManagement();
-        return productSizeManagement.getAllProductSizes();
+    private List<ProductSizeList> getProductWithSizeList() {
+        ProductSizeListMangement productSizeListMangement = new ProductSizeListMangement();
+        return productSizeListMangement.getAllProductWithListSize();
     }
 
 
@@ -140,6 +127,11 @@ public class FoodAndDrinkManagement_Controller {
     private void updateSize(Size size) {
         SizeManagement sizeManagement = new SizeManagement();
         sizeManagement.updateSize(size);
+    }
+
+    private Product getProductByID(int id) {
+        ProductManagement productManagement = new ProductManagement();
+        return productManagement.getProductById(id);
     }
     
 }
