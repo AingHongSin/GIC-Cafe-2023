@@ -23,8 +23,20 @@ body .container .drink-food header .start:nth-child(1) {
   font-weight: 200;
 }
 
-body .container .drink-food header .mid div:nth-child(2) button {
-  display: inline-block;
+body .container .drink-food header .mid div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+  margin: auto;
+  margin-right: 5px;
+}
+
+body .container .drink-food header .mid div:nth-child(2) a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
 
   width: 133.36px;
@@ -33,27 +45,31 @@ body .container .drink-food header .mid div:nth-child(2) button {
   /* Primary */
 
   border-radius: 5px;
+  
+  text-decoration: none;
 }
 
-body .container .drink-food header .mid div:nth-child(2) button:first-child {
+body .container .drink-food header .mid div:nth-child(2) .productTypeButton {
+  background: #FAFAFA;
+  color: #B4ACAC;
+  border: 1px solid #B4ACAC;
+}
+
+body .container .drink-food header .productTypeChoosed {
   color: white;
   background-color: #32BBCB;
   border: none;
-  border-radius: 5px;
-  padding: 0.5rem 2rem;
 }
-body .container .drink-food header .mid div:nth-child(2) button:nth-child(2) {
+body .container .drink-food header .mid div:nth-child(2) a:hover{
+  background-color: #32BBCB;
   border: none;
-  border-radius: 5px;
-  padding: 0.5rem 2rem;
-  opacity: 60%;
-  margin-left: 1rem;
-}
-body .container .drink-food header .mid div:nth-child(2) button:hover {
-  cursor: pointer;
+  color: white;
 }
 
+
 body .container .drink-food header .end nav {
+  width: 97%;
+  overflow-x: scroll;
   display: flex;
   gap: 1rem;
 }
@@ -83,7 +99,7 @@ body .container .drink-food header .end nav a:hover hr {
 }
 
 
-body .container .drink-food header .end .search {
+/* body .container .drink-food header .end .search {
   width: 250px;
   height: 40px;
 
@@ -102,7 +118,7 @@ body .container .drink-food header .end .search input {
   
   background-color: #f1f1f1;
 
-}
+} */
 body .container .drink-food .show-item {
   width: 100%;
   margin-top: 1rem;
@@ -111,8 +127,9 @@ body .container .drink-food .show-item .data {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 22px;
+
   width: 95%;
-  height: 750px;
+  height: 85vh;
   overflow-y: auto;
   margin: auto;
 }
@@ -165,13 +182,32 @@ body .container .drink-food .show-item .data .item div:nth-child(2) p {
   font-size: 12.15px;
 }
 
-body .container .drink-food .show-item .data .item div:nth-child(2) p:nth-child(2) {
-  font-weight: 500;
+body .container .drink-food .show-item .data .item div:nth-child(2) .group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  height: 20px;
+  margin-top: 0px;
 }
-body .container .drink-food .show-item .data .item div:nth-child(2) p:nth-child(3) {
+
+body .container .drink-food .show-item .data .item .priceGroup {
+  /* font-weight: 500; */
+}
+
+body .container .drink-food .show-item .data .item .sizeGroup {
   opacity: 50%;
 }
-body .container .drink-food .show-item .data .item button {
+
+body .container .drink-food .show-item .data .item a {
+  width: 75%;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  
+
   color: white;
   display: flex;
   justify-content: center;
@@ -179,20 +215,16 @@ body .container .drink-food .show-item .data .item button {
   gap: 6.94px;
   font-weight: 600;
   
+  cursor: pointer;
   
-  width: 90%;
-  margin-top: 21px;
-  margin-left: auto;
-  margin-right: auto;
 
   background: #32BBCB;
-  box-shadow: 0px 6.94423px 20.8327px rgba(146, 136, 224, 0.3);
   border-radius: 6.94423px;
   border: none;
 }
 
-body .container .drink-food .show-item .data .item button:hover {
-  cursor: pointer;
+body .container .drink-food .show-item .data .item a:hover {
+  box-shadow: 0px 6.94423px 20.8327px rgba(146, 136, 224, 0.3);
 }
 
 body .container .order-list {

@@ -84,6 +84,17 @@ public class CategoryManagement extends Management<Category> {
 
         delete(categoryId, query);
     }
+
+    public List<Category> getAllDrinksCategory() {
+        String query = "SELECT * FROM category WHERE type = 'Drink'";
+        return getAll(query);
+    }
+    
+    public List<Category> getAllFoodCatrgory() {
+        String query = "SELECT * FROM category WHERE type = 'Food'";
+        return getAll(query);
+    }
+    
 }
 
 

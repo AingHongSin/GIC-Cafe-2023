@@ -41,6 +41,8 @@ public class ProductManagement extends Management<Product> {
         }
     }
 
+
+    // MARK: PUBLIC-FUNCTION
     public int addProduct(Product product) {
         String query = "INSERT INTO product (name, description, category_id, image_url, last_order) VALUES (?, ?, ?, ?, ?)";
         return add(product, query);
@@ -76,8 +78,21 @@ public class ProductManagement extends Management<Product> {
         return query(keyword, query);
     }
 
+    public List<Product> getAllFood() {
+        String query = "SELECT p.* FROM product p INNER JOIN category c ON p.category_id = c.category_id WHERE c.type = 'Food'";
+        return query("Keyword", query);
+    }
+    
+    public List<Product> getAllDrink() {
+        String query = "SELECT p.* FROM product p INNER JOIN category c ON p.category_id = c.category_id WHERE c.type = 'Drink'";
+        return query("Keyword", query);
+    }
+
+    // MARK: PRIVATE-FUNCTION
     private Category getCategoryById(int categoryId) {
         CategoryManagement categoryManagement = new CategoryManagement();
         return categoryManagement.getCategoryById(categoryId);
     }
+
+
 }

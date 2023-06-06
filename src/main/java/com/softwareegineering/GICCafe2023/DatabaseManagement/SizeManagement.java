@@ -58,4 +58,10 @@ public class SizeManagement extends Management<Size> {
         String query = "SELECT * FROM size WHERE size_name LIKE ?";
         return query(keyword, query);
     }
+
+    public List<Size> getAllSizeOfProduct(int productId) {
+        String query = "SELECT s.* FROM size s INNER JOIN product_size ps ON s.size_id = ps.size_id WHERE ps.product_id = ?";
+        return query("Keyword", query, productId);
+    }
+    
 }
